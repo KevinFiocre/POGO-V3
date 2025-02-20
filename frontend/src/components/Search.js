@@ -1,19 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-const Search = () => {
-    const [data, setData] = useState(null);
+const Search = ({ onMusicSelect }) => {
+    const [query, setQuery] = useState("");
+    const [results, setResults] = useState([]);
 
-    useEffect(() => {
-        fetch("https://pogo-v3.onrender.com/api/search") // URL de ton backend
-            .then(response => response.json())
-            .then(data => console.log("Données reçues :", data))
-            .catch(error => console.error("Erreur API :", error));
-    }, []);
+    const handleSearch = async () => {
+        const response = await fetch(`https://pogo-v3.onrender.com/api/search?q=${query}`);
+        const data = await response.json();
+        setResults(data.data);
+    };
 
     return (
         <div>
-            <h1>Recherche</h1>
-            {data ? <p>{data.message}</p> : <p>Chargement...</p>}
+            <input
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Rechercher une musique..."
+            />
+            <button onClick={handleSearch}>Rechercher</button>
+
+            <ul>
+                {results.map((track) => (
+                    <li key={track.id} onClick={() => onMusicSelect(track)}>
+                        {track.title} - {track.artist.name}
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 };

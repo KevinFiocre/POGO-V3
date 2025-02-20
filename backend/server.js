@@ -24,3 +24,9 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
     console.log(`🚀 Serveur backend en ligne sur http://localhost:${PORT}`);
 });
+
+const deezerRoutes = require("./routes/deezerRoutes");
+app.use("/api", deezerRoutes);
+
+const soundscapeRoutes = require("./routes/soundscapeRoutes");
+app.use("/api", soundscapeRoutes);
