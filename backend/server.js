@@ -6,6 +6,9 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 10000;
 
+const deezerRoutes = require("./routes/deezerRoutes");
+app.use("/api", deezerRoutes);
+
 app.use(cors());
 app.use(express.json());
 
