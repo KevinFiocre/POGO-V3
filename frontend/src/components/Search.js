@@ -1,137 +1,60 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faPlay } from "@fortawesome/free-solid-svg-icons";
 
-const Search = () => {
+const Search = ({ onMusicSelect }) => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
-  const [currentTrack, setCurrentTrack] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolume] = useState(0.5);
-  const [balance, setBalance] = useState(0);
-  const [selectedAmbiance, setSelectedAmbiance] = useState(null);
-  const audioRef = useRef(null);
 
   const handleSearch = async () => {
+    if (!query) return;
     try {
-      const response = await fetch(
-        `https://pogo-v3.onrender.com/api/search?q=${query}`
-      );
+      const response = await fetch(`https://pogo-v3.onrender.com/api/search?q=${query}`);
       const data = await response.json();
-      if (data.data) {
-        setResults(data.data.slice(0, 1)); // Afficher seulement 1 track pour focus sur UI
-      } else {
-        setResults([]);
-      }
+      setResults(data.data ? data.data.slice(0, 5) : []);
     } catch (error) {
       console.error("Erreur API :", error);
       setResults([]);
     }
   };
 
-  const playTrack = (track) => {
-    if (currentTrack === track.preview && isPlaying) {
-      audioRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      setCurrentTrack(track.preview);
-      audioRef.current.src = track.preview;
-      audioRef.current.volume = volume;
-      audioRef.current.play();
-      setIsPlaying(true);
-    }
-  };
-
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="bg-white shadow-lg rounded-lg p-6 w-96 text-center">
-        <h1 className="text-2xl font-semibold mb-4">SoundScape</h1>
-        
-        {/* Barre de recherche */}
-        <div className="relative flex items-center justify-center mb-4">
-          <input
-            type="text"
-            className="p-2 w-full rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
-            placeholder="Rechercher un artiste..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <button
-            onClick={handleSearch}
-            className="absolute right-3 text-gray-500"
-          >
-            <FontAwesomeIcon icon={faSearch} size="lg" />
-          </button>
-        </div>
+    <div className="min-h-screen bg-gray-900 text-white p-6">
+      <h1 className="text-3xl font-bold text-center mb-6">SoundScape</h1>
 
-        {/* Résultat */}
-        {results.length > 0 && results.map((track, index) => (
-          <div key={index} className="flex flex-col items-center">
-            <img
-              src={track.album.cover_medium}
-              alt={track.title}
-              className="w-64 h-64 rounded-lg shadow-md mb-4"
-            />
-            <p className="text-xl font-bold">{track.title}</p>
-            <p className="text-gray-500">{track.artist.name}</p>
-
-            {/* Bouton Play/Pause */}
-            <button
-              onClick={() => playTrack(track)}
-              className="mt-4 bg-purple-500 hover:bg-purple-700 text-white px-6 py-2 rounded-full transition duration-300"
-            >
-              <FontAwesomeIcon icon={currentTrack === track.preview && isPlaying ? faPause : faPlay} />
-            </button>
-
-            {/* Volume et Balance */}
-            <div className="mt-4 w-full text-left">
-              <p className="text-sm font-semibold">Volume principal : {Math.round(volume * 100)}%</p>
-              <input 
-                type="range" 
-                min="0" 
-                max="1" 
-                step="0.01" 
-                value={volume}
-                onChange={(e) => {
-                  setVolume(e.target.value);
-                  if (audioRef.current) audioRef.current.volume = e.target.value;
-                }}
-                className="w-full mt-1"
-              />
-
-              <p className="text-sm font-semibold mt-2">Balance (gauche/droite) : {balance}</p>
-              <input 
-                type="range" 
-                min="-1" 
-                max="1" 
-                step="0.1" 
-                value={balance}
-                onChange={(e) => setBalance(e.target.value)}
-                className="w-full mt-1"
-              />
-            </div>
-
-            {/* Sélection du son d'ambiance */}
-            <h3 className="text-md font-semibold mt-4">Sons d'ambiance</h3>
-            <div className="flex gap-4 mt-2">
-              {["Pluie", "Forêt"].map((ambiance) => (
-                <button
-                  key={ambiance}
-                  onClick={() => setSelectedAmbiance(ambiance)}
-                  className={`px-4 py-2 rounded-lg transition duration-300 ${
-                    selectedAmbiance === ambiance ? "bg-purple-600 text-white" : "bg-gray-300 text-gray-700"
-                  }`}
-                >
-                  {ambiance}
-                </button>
-              ))}
-            </div>
-          </div>
-        ))}
-
-        {/* Lecteur Audio caché */}
-        <audio ref={audioRef} onEnded={() => setIsPlaying(false)} />
+      {/* Barre de recherche */}
+      <div className="flex items-center justify-center mb-4">
+        <input
+          type="text"
+          className="p-3 w-full max-w-md rounded-lg bg-gray-800 border border-gray-600 text-white focus:ring-2 focus:ring-purple-500 outline-none"
+          placeholder="Rechercher un artiste..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <button onClick={handleSearch} className="ml-3 text-purple-400">
+          <FontAwesomeIcon icon={faSearch} size="lg" />
+        </button>
       </div>
+
+      {/* Résultats */}
+      {results.length > 0 && (
+        <div className="mt-4 space-y-4">
+          {results.map((track, index) => (
+            <div
+              key={index}
+              className="flex items-center bg-gray-800 rounded-lg p-3 cursor-pointer hover:bg-gray-700 transition"
+              onClick={() => onMusicSelect(track)}
+            >
+              <img src={track.album.cover_medium} alt={track.title} className="w-16 h-16 rounded-lg" />
+              <div className="ml-4">
+                <p className="text-lg font-semibold">{track.title}</p>
+                <p className="text-gray-400 text-sm">{track.artist.name}</p>
+              </div>
+              <FontAwesomeIcon icon={faPlay} className="text-purple-400 ml-auto" />
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
