@@ -1,12 +1,15 @@
 import React, { useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
 
 const Search = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [currentTrack, setCurrentTrack] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(0.5);
+  const [balance, setBalance] = useState(0);
+  const [selectedAmbiance, setSelectedAmbiance] = useState(null);
   const audioRef = useRef(null);
 
   const handleSearch = async () => {
@@ -16,7 +19,7 @@ const Search = () => {
       );
       const data = await response.json();
       if (data.data) {
-        setResults(data.data.slice(0, 5));
+        setResults(data.data.slice(0, 1)); // Afficher seulement 1 track pour focus sur UI
       } else {
         setResults([]);
       }
@@ -33,57 +36,102 @@ const Search = () => {
     } else {
       setCurrentTrack(track.preview);
       audioRef.current.src = track.preview;
+      audioRef.current.volume = volume;
       audioRef.current.play();
       setIsPlaying(true);
     }
   };
 
   return (
-    <div className="bg-gray-900 text-white min-h-screen flex flex-col items-center py-10 font-sans">
-      {/* Barre de Recherche */}
-      <h1 className="text-3xl font-bold mb-6">🎵 POGO Soundscape</h1>
-      <div className="flex space-x-4 mb-6">
-        <input
-          type="text"
-          className="p-2 rounded-md text-black"
-          placeholder="Rechercher un artiste..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button
-          onClick={handleSearch}
-          className="bg-red-500 hover:bg-red-700 px-4 py-2 rounded-md"
-        >
-          Rechercher
-        </button>
-      </div>
-
-      {/* Liste des musiques */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {results.map((track, index) => (
-          <div
-            key={index}
-            className="bg-gray-800 p-4 rounded-lg flex flex-col items-center"
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <div className="bg-white shadow-lg rounded-lg p-6 w-96 text-center">
+        <h1 className="text-2xl font-semibold mb-4">SoundScape</h1>
+        
+        {/* Barre de recherche */}
+        <div className="relative flex items-center justify-center mb-4">
+          <input
+            type="text"
+            className="p-2 w-full rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            placeholder="Rechercher un artiste..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <button
+            onClick={handleSearch}
+            className="absolute right-3 text-gray-500"
           >
+            <FontAwesomeIcon icon={faSearch} size="lg" />
+          </button>
+        </div>
+
+        {/* Résultat */}
+        {results.length > 0 && results.map((track, index) => (
+          <div key={index} className="flex flex-col items-center">
             <img
               src={track.album.cover_medium}
               alt={track.title}
-              className="w-32 h-32 rounded-lg mb-4"
+              className="w-64 h-64 rounded-lg shadow-md mb-4"
             />
-            <p className="text-lg font-bold">{track.title}</p>
-            <p className="text-sm text-gray-400">{track.artist.name}</p>
+            <p className="text-xl font-bold">{track.title}</p>
+            <p className="text-gray-500">{track.artist.name}</p>
+
+            {/* Bouton Play/Pause */}
             <button
               onClick={() => playTrack(track)}
-              className="mt-2 bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded-md"
+              className="mt-4 bg-purple-500 hover:bg-purple-700 text-white px-6 py-2 rounded-full transition duration-300"
             >
               <FontAwesomeIcon icon={currentTrack === track.preview && isPlaying ? faPause : faPlay} />
             </button>
+
+            {/* Volume et Balance */}
+            <div className="mt-4 w-full text-left">
+              <p className="text-sm font-semibold">Volume principal : {Math.round(volume * 100)}%</p>
+              <input 
+                type="range" 
+                min="0" 
+                max="1" 
+                step="0.01" 
+                value={volume}
+                onChange={(e) => {
+                  setVolume(e.target.value);
+                  if (audioRef.current) audioRef.current.volume = e.target.value;
+                }}
+                className="w-full mt-1"
+              />
+
+              <p className="text-sm font-semibold mt-2">Balance (gauche/droite) : {balance}</p>
+              <input 
+                type="range" 
+                min="-1" 
+                max="1" 
+                step="0.1" 
+                value={balance}
+                onChange={(e) => setBalance(e.target.value)}
+                className="w-full mt-1"
+              />
+            </div>
+
+            {/* Sélection du son d'ambiance */}
+            <h3 className="text-md font-semibold mt-4">Sons d'ambiance</h3>
+            <div className="flex gap-4 mt-2">
+              {["Pluie", "Forêt"].map((ambiance) => (
+                <button
+                  key={ambiance}
+                  onClick={() => setSelectedAmbiance(ambiance)}
+                  className={`px-4 py-2 rounded-lg transition duration-300 ${
+                    selectedAmbiance === ambiance ? "bg-purple-600 text-white" : "bg-gray-300 text-gray-700"
+                  }`}
+                >
+                  {ambiance}
+                </button>
+              ))}
+            </div>
           </div>
         ))}
-      </div>
 
-      {/* Lecteur Audio */}
-      <audio ref={audioRef} onEnded={() => setIsPlaying(false)} />
+        {/* Lecteur Audio caché */}
+        <audio ref={audioRef} onEnded={() => setIsPlaying(false)} />
+      </div>
     </div>
   );
 };
