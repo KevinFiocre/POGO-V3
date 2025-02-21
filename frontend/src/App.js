@@ -8,8 +8,8 @@ const App = () => {
     const [selectedAmbiance, setSelectedAmbiance] = useState("");
 
     return (
-        <div>
-            <h1>POGO Soundscape</h1>
+        <div className="container mx-auto p-4">
+            <h1 className="text-xl font-bold text-center">POGO Soundscape</h1>
             <Search onMusicSelect={setSelectedTrack} />
             <AmbianceSelector onSelect={setSelectedAmbiance} />
             <MusicPlayer track={selectedTrack} ambiance={selectedAmbiance} />
