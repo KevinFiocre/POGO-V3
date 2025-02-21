@@ -16,7 +16,7 @@ const App = () => {
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-900 text-white">
-            <div className="bg-gray-800 shadow-lg rounded-lg p-6 w-96 text-center">
+            <div className="bg-gray-800 shadow-lg rounded-lg p-6 w-96 text-center relative">
                 {showPlayer ? (
                     <>
                         {/* Bouton Retour */}
@@ -28,8 +28,8 @@ const App = () => {
                         </button>
 
                         {/* Lecteur de musique */}
-                        <MusicPlayer track={selectedTrack} ambiance={selectedAmbiance} />
-                        
+                        <MusicPlayer track={selectedTrack} />
+
                         {/* Sélection du son d’ambiance */}
                         <AmbianceSelector onSelect={setSelectedAmbiance} />
                     </>

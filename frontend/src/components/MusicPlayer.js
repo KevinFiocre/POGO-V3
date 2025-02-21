@@ -2,14 +2,21 @@ import React, { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
 
-const MusicPlayer = ({ track, ambiance }) => {
+const ambianceSounds = {
+    Pluie: "/sounds/pluie.mp3",
+    Voiture: "/sounds/voiture.mp3",
+};
+
+const MusicPlayer = ({ track, onBack }) => {
     const audioRef = useRef(null);
     const ambianceRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [progress, setProgress] = useState(0);
+    const [volume, setVolume] = useState(0.5);
+    const [selectedAmbiance, setSelectedAmbiance] = useState(null);
     const [isAmbiancePlaying, setIsAmbiancePlaying] = useState(false);
 
-    // Jouer la musique principale
+    // Lecture automatique à la sélection d'un morceau
     useEffect(() => {
         if (audioRef.current && track) {
             audioRef.current.src = track.preview;
@@ -19,7 +26,7 @@ const MusicPlayer = ({ track, ambiance }) => {
         }
     }, [track]);
 
-    // Mettre à jour la barre de progression
+    // Mise à jour de la barre de progression
     useEffect(() => {
         const updateProgress = () => {
             if (audioRef.current) {
@@ -36,17 +43,7 @@ const MusicPlayer = ({ track, ambiance }) => {
         };
     }, []);
 
-    // Jouer le son d'ambiance
-    useEffect(() => {
-        if (ambianceRef.current && ambiance) {
-            ambianceRef.current.src = `/sounds/${ambiance}.mp3`;
-            ambianceRef.current.load();
-            ambianceRef.current.play();
-            setIsAmbiancePlaying(true);
-        }
-    }, [ambiance]);
-
-    // Play / Pause de la musique principale
+    // Lecture/Pause du morceau principal
     const togglePlay = () => {
         if (audioRef.current) {
             if (isPlaying) {
@@ -58,20 +55,30 @@ const MusicPlayer = ({ track, ambiance }) => {
         }
     };
 
-    // Play / Pause du son d'ambiance
-    const toggleAmbiance = () => {
+    // Sélection et lecture du son d'ambiance
+    const toggleAmbiance = (ambiance) => {
         if (ambianceRef.current) {
-            if (isAmbiancePlaying) {
+            if (selectedAmbiance === ambiance && isAmbiancePlaying) {
                 ambianceRef.current.pause();
+                setIsAmbiancePlaying(false);
             } else {
+                ambianceRef.current.src = ambianceSounds[ambiance];
+                ambianceRef.current.load();
                 ambianceRef.current.play();
+                setSelectedAmbiance(ambiance);
+                setIsAmbiancePlaying(true);
             }
-            setIsAmbiancePlaying(!isAmbiancePlaying);
         }
     };
 
     return (
         <div className="flex flex-col items-center mt-6 p-6 border rounded-lg shadow-lg bg-gray-800 text-white w-96">
+            {/* Bouton retour */}
+            <button onClick={onBack} className="mb-4 text-gray-400 hover:text-white">
+                ⬅ Retour
+            </button>
+
+            {/* Affichage des informations du morceau */}
             {track ? (
                 <>
                     <img src={track.album.cover_medium} alt={track.title} className="w-64 h-64 rounded-lg shadow-md mb-4" />
@@ -100,22 +107,44 @@ const MusicPlayer = ({ track, ambiance }) => {
                         }}
                         className="w-full mt-4"
                     />
+
+                    {/* Contrôle du volume */}
+                    <div className="mt-4">
+                        <p className="text-sm font-semibold">Volume : {Math.round(volume * 100)}%</p>
+                        <input
+                            type="range"
+                            min="0"
+                            max="1"
+                            step="0.01"
+                            value={volume}
+                            onChange={(e) => {
+                                setVolume(e.target.value);
+                                if (audioRef.current) audioRef.current.volume = e.target.value;
+                            }}
+                            className="w-full mt-1"
+                        />
+                    </div>
+
+                    {/* Sélection et lecture de sons d’ambiance */}
+                    <h3 className="text-md font-bold mt-4">Sons d'ambiance</h3>
+                    <div className="flex gap-4 mt-2">
+                        {Object.keys(ambianceSounds).map((ambiance) => (
+                            <button
+                                key={ambiance}
+                                onClick={() => toggleAmbiance(ambiance)}
+                                className={`px-4 py-2 rounded-lg transition duration-300 ${
+                                    selectedAmbiance === ambiance && isAmbiancePlaying
+                                        ? "bg-purple-600 text-white"
+                                        : "bg-gray-500 text-gray-300"
+                                }`}
+                            >
+                                {ambiance}
+                            </button>
+                        ))}
+                    </div>
                 </>
             ) : (
                 <p className="text-gray-400">Aucune musique sélectionnée</p>
-            )}
-
-            {/* Ambiance Selector */}
-            {ambiance && (
-                <div className="mt-4">
-                    <h3 className="text-md font-bold">Son d'ambiance : {ambiance}</h3>
-                    <button
-                        onClick={toggleAmbiance}
-                        className="mt-2 bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded-full"
-                    >
-                        {isAmbiancePlaying ? "⏸️ Pause" : "▶️ Jouer"}
-                    </button>
-                </div>
             )}
 
             {/* Audio elements cachés */}
