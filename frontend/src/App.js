@@ -15,7 +15,7 @@ const App = () => {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-900 text-white">
+        <div className="flex flex-col items-center min-h-screen bg-gray-900 text-white w-full">
             <div className="bg-gray-800 shadow-lg rounded-lg p-6 w-96 text-center relative">
                 {showPlayer ? (
                     <>

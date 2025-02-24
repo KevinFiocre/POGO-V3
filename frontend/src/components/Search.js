@@ -29,9 +29,8 @@ const Search = ({ onMusicSelect }) => {
     };
 
     return (
-        <div className="flex flex-col items-center min-h-screen bg-gray-900 text-white px-4">
-    <div className="w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-4 text-center">🎵 POGO Soundscape</h1>
+        <div className="w-full max-w-lg px-4">
+            <h1 className="text-3xl font-bold mb-6">SoundScape</h1>
 
             {/* Barre de recherche */}
             <div className="relative flex items-center justify-center mb-6">
@@ -75,7 +74,6 @@ const Search = ({ onMusicSelect }) => {
                 )}
             </ul>
         </div>
-    </div>
     );
 };
 
