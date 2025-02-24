@@ -5,4 +5,9 @@ export default {
     extend: {},
   },
   plugins: [],
+  safelist: [
+    "bg-purple-500", "hover:bg-purple-700",
+    "bg-gray-500", "hover:bg-gray-700",
+    "text-white", "text-gray-400"
+  ]
 };
