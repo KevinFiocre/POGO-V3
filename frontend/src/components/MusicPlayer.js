@@ -37,7 +37,7 @@ const MusicPlayer = ({ track, onBack }) => {
     };
 
     return (
-        <div className="flex flex-col items-center p-6 border rounded-lg shadow-lg bg-gray-800 text-white w-full max-w-xs sm:max-w-md">
+        <div className="flex flex-col items-center p-6 border rounded-lg shadow-lg bg-gray-800 text-white w-full max-w-md mx-auto">
             <button onClick={onBack} className="mb-4 text-gray-400 hover:text-white text-sm">
                 ⬅ Retour
             </button>
