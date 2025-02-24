@@ -2,7 +2,14 @@
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        xs: "320px", // 📱 Petits téléphones
+        sm: "480px", // 📱 Mobiles normaux
+        md: "768px", // 🖥️ Tablettes
+        lg: "1024px", // 💻 Ordinateurs
+      },
+    },
   },
   plugins: [],
   safelist: [
