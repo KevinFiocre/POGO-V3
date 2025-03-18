@@ -13,12 +13,13 @@ const MusicPlayer = ({ track, onBack }) => {
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
-        if (audioRef.current && track) {
+        if (audioRef.current && track?.preview) {
             audioRef.current.src = track.preview;
             audioRef.current.load();
-            audioRef.current.play();
+            audioRef.current.play().catch(error => console.log("Erreur de lecture audio :", error));
             setIsPlaying(true);
         }
+        console.log("Track reçu :", track);
     }, [track]);
 
     const togglePlay = () => {
@@ -45,7 +46,9 @@ const MusicPlayer = ({ track, onBack }) => {
                 <FontAwesomeIcon icon={faEllipsisH} className="svg chrome" />
             </div>
 
-            {track && <img src={track.album.cover_medium} alt="Page de l'album" className="deezer-image" />}
+            {track?.album?.cover_medium && (
+                <img src={track.album.cover_medium} alt="Page de l'album" className="deezer-image" />
+            )}
 
             <div className="deezer-option">
                 <FontAwesomeIcon icon={faShare} className="svg Partage" />
