@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
+import { faPlay, faPause, faStepBackward, faStepForward, faShare, faEllipsisH, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const ambianceSounds = {
     Pluie: "/sounds/pluie.mp3",
@@ -9,12 +9,8 @@ const ambianceSounds = {
 
 const MusicPlayer = ({ track, onBack }) => {
     const audioRef = useRef(null);
-    const ambianceRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [progress, setProgress] = useState(0);
-    const [volume, setVolume] = useState(0.5);
-    const [selectedAmbiance, setSelectedAmbiance] = useState(null);
-    const [isAmbiancePlaying, setIsAmbiancePlaying] = useState(false);
 
     useEffect(() => {
         if (audioRef.current && track) {
@@ -37,47 +33,48 @@ const MusicPlayer = ({ track, onBack }) => {
     };
 
     return (
-        <div className="w-full max-w-lg px-4">
-            <button onClick={onBack} className="mb-4 text-gray-400 hover:text-white text-sm">
-                ⬅ Retour
-            </button>
+        <div className="deezer-container">
+            <div className="deezer-header">
+                <button onClick={onBack}>
+                    <FontAwesomeIcon icon={faStepBackward} className="svg retour" />
+                </button>
+                <div>
+                    <p>ALBUM</p>
+                    <h3>{track?.album?.title || "Nom de l'album"}</h3>
+                </div>
+                <FontAwesomeIcon icon={faEllipsisH} className="svg chrome" />
+            </div>
 
-            {track && (
-                <>
-                    <img src={track.album.cover_medium} alt={track.title} className="w-40 h-40 rounded-lg shadow-md mb-4" />
-                    <h2 className="text-lg font-bold">{track.title}</h2>
-                    <p className="text-gray-400">{track.artist.name}</p>
+            {track && <img src={track.album.cover_medium} alt="Page de l'album" className="deezer-image" />}
 
-                    <button
-                        onClick={togglePlay}
-                        className="mt-4 bg-purple-500 hover:bg-purple-700 text-white px-6 py-2 rounded-full transition"
-                    >
-                        <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
-                    </button>
+            <div className="deezer-option">
+                <FontAwesomeIcon icon={faShare} className="svg Partage" />
+                <FontAwesomeIcon icon={faEllipsisH} className="svg Option" />
+                <FontAwesomeIcon icon={faHeart} className="svg Like" />
+            </div>
 
-                    <input
-                        type="range"
-                        min="0"
-                        max="100"
-                        value={progress}
-                        className="w-full mt-4"
-                    />
+            <div className="deezer-time">{progress}%</div>
 
-                    <div className="mt-4">
-                        <h3 className="text-md font-bold">Sons d'ambiance</h3>
-                        <div className="flex gap-4 mt-2">
-                            {Object.keys(ambianceSounds).map((ambiance) => (
-                                <button key={ambiance} className="px-4 py-2 rounded-lg bg-gray-600">
-                                    {ambiance}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-                </>
-            )}
+            <div className="deezer-music">
+                <p>{track?.title || "Titre de la musique"}</p>
+                <p>{track?.artist?.name || "Artiste"}</p>
+            </div>
+
+            <div className="deezer-control">
+                <FontAwesomeIcon icon={faStepBackward} className="svg Precedent" />
+                <button onClick={togglePlay} className="Play">
+                    <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
+                </button>
+                <FontAwesomeIcon icon={faStepForward} className="svg Suivant" />
+            </div>
+
+            <div className="deezer-footer">
+                <FontAwesomeIcon icon={faEllipsisH} />
+                <div className="Timer">0:00 / 3:00</div>
+                <FontAwesomeIcon icon={faEllipsisH} className="svg Album" />
+            </div>
 
             <audio ref={audioRef} />
-            <audio ref={ambianceRef} loop />
         </div>
     );
 };
