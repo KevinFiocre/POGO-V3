@@ -46,7 +46,12 @@ const MusicPlayer = ({ track, onBack }) => {
             </div>
 
             {track?.album?.cover_medium && (
-                <img src={track.album.cover_medium} alt="Page de l'album" className="deezer-image" />
+                <img 
+                    src={track.album.cover_medium} 
+                    alt="Page de l'album" 
+                    className="deezer-image"
+                    style={{ width: "80vw", height: "80vw", objectFit: "cover", display: "block", margin: "0 auto", borderRadius: "8px" }} 
+                />
             )}
 
             <div className="deezer-option">
@@ -64,7 +69,7 @@ const MusicPlayer = ({ track, onBack }) => {
 
             <div className="deezer-control">
                 <FontAwesomeIcon icon={faStepBackward} className="svg Precedent" />
-                <button onClick={togglePlay} className="Play">
+                <button onClick={togglePlay} className="Play" style={{ width: "60px", height: "60px", fontSize: "32px" }}>
                     <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
                 </button>
                 <FontAwesomeIcon icon={faStepForward} className="svg Suivant" />
