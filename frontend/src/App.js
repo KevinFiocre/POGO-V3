@@ -12,9 +12,9 @@ const App = () => {
   ];
 
   const creators = [
-    { id: 1, name: "Kevin", img: "/image/kevin.png" },
-    { id: 2, name: "Lucie", img: "/image/lucie.jpeg" },
-    { id: 3, name: "Alexandra", img: "/image/alexandra.jpeg" },
+    { id: 1, name: "Kevin", img: "/image/kevin.png", link: "https://www.instagram.com/kevin" },
+    { id: 2, name: "Lucie", img: "/image/lucie.jpeg", link: "https://www.linkedin.com/in/lucie" },
+    { id: 3, name: "Alexandra", img: "/image/alexandra.jpeg", link: "https://www.instagram.com/alexandra" },
   ];
 
   const handleSelectTrack = (track) => {
@@ -62,14 +62,20 @@ const App = () => {
             <h2 className="text-lg font-bold mb-4 text-center md:text-xl lg:text-2xl">Les créateurs</h2>
             <div className="flex overflow-x-scroll whitespace-nowrap space-x-4 px-2 scrollbar-hide w-full">
               {creators.map((creator) => (
-                <div key={creator.id} className="flex flex-col items-center w-1/4 min-w-[25%]">
+                <a 
+                  key={creator.id} 
+                  href={creator.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex flex-col items-center w-1/4 min-w-[25%]"
+                >
                   <img 
                     src={creator.img} 
                     alt={creator.name} 
                     className="w-[500px] h-[500px] bg-white rounded-full sm:w-[200px] sm:h-[200px]" 
                   />
                   <p className="text-sm mt-2 text-center">{creator.name}</p>
-                </div>
+                </a>
               ))}
             </div>
           </section>
