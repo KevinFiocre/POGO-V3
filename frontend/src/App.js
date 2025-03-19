@@ -49,7 +49,7 @@ const App = () => {
                   <img 
                     src={track.album.cover_medium} 
                     alt={track.title} 
-                    className="w-full h-auto bg-gray-400 rounded-md" 
+                    className="w-1/4 aspect-square bg-gray-400 rounded-md object-cover" 
                   />
                   <p className="text-sm mt-2 text-center">{track.title}</p>
                 </div>
