@@ -29,14 +29,14 @@ const MusicPlayer = ({ track, onBack }) => {
     };
 
     return (
-        <div className="container" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", height: "100vh" }}>
+        <div className="container" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", height: "100vh", padding: "20px" }}>
             {/* En-tête */}
-            <section className="header" style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center", gap: "auto", width: "100%" }}>
+            <section className="header" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%", marginBottom: "20px" }}>
                 <button onClick={onBack}>
-                    <FontAwesomeIcon icon={faArrowLeft} className="svg" style={{ fontSize: "64px" }} />
+                    <FontAwesomeIcon icon={faArrowLeft} className="svg" style={{ fontSize: "40px" }} />
                 </button>
-                <img className="logo" src="/image/LOGO.png" alt="logo" />
-                <FontAwesomeIcon icon={faChromecast} className="svg" style={{ fontSize: "64px" }} />
+                <h1 style={{ fontSize: "40px", textAlign: "center", flex: 1 }}>AMBIANT</h1>
+                <FontAwesomeIcon icon={faChromecast} className="svg" style={{ fontSize: "40px" }} />
             </section>
 
             {/* Image de l'album */}
@@ -45,35 +45,33 @@ const MusicPlayer = ({ track, onBack }) => {
                     src={track.album.cover_medium} 
                     alt="Cover" 
                     className="album-cover"
-                    style={{ width: "500px", height: "500px", objectFit: "cover", margin: "20px 0" }}
+                    style={{ width: "400px", height: "400px", objectFit: "cover", marginBottom: "20px" }}
                 />
             )}
 
-            {/* Timer */}
-            <section className="timer" style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center", gap: "auto", width: "100%" }}>
-                <div className="progress-bar" style={{ flex: 1 }}>
-                    <div className="progress" style={{ width: `${progress}%` }}></div>
-                </div>
-                <div className="time">0:00 / 3:00</div>
+            {/* Infos sur la musique */}
+            <section className="musique" style={{ textAlign: "center", marginBottom: "20px" }}>
+                <h2 style={{ fontSize: "22px" }}>{track?.title || "Titre"}</h2>
+                <p style={{ fontSize: "18px", opacity: 0.8 }}>{track?.artist?.name || "Nom de l'artiste"}</p>
             </section>
 
-            {/* Infos sur la musique */}
-            <section className="musique" style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center", gap: "auto", width: "100%" }}>
-                <h2>{track?.title || "Titre"}</h2>
-                <p>{track?.artist?.name || "Nom de l'artiste"}</p>
+            {/* Timer */}
+            <section className="timer" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%", marginBottom: "20px" }}>
+                <div className="progress-bar" style={{ flex: 1, height: "5px", background: "#555", borderRadius: "5px", margin: "0 10px" }}>
+                    <div className="progress" style={{ width: `${progress}%`, height: "5px", background: "#FFF", borderRadius: "5px" }}></div>
+                </div>
+                <div className="time" style={{ fontSize: "14px" }}>0:00 / 3:00</div>
             </section>
 
             {/* Contrôles */}
-            <section className="control" style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center", gap: "auto", width: "100%" }}>
-                <FontAwesomeIcon icon={faRepeat} className="svg" style={{ fontSize: "64px" }} />
-                <div className="player" style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center", gap: "auto" }}>
-                    <FontAwesomeIcon icon={faStepBackward} className="svg" style={{ fontSize: "64px" }} />
-                    <button onClick={togglePlay} className="play">
-                        <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} style={{ fontSize: "64px" }} />
-                    </button>
-                    <FontAwesomeIcon icon={faStepForward} className="svg" style={{ fontSize: "64px" }} />
-                </div>
-                <FontAwesomeIcon icon={faRandom} className="svg" style={{ fontSize: "64px" }} />
+            <section className="control" style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "20px" }}>
+                <FontAwesomeIcon icon={faRepeat} className="svg" style={{ fontSize: "50px" }} />
+                <FontAwesomeIcon icon={faStepBackward} className="svg" style={{ fontSize: "50px" }} />
+                <button onClick={togglePlay} className="play">
+                    <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} style={{ fontSize: "50px" }} />
+                </button>
+                <FontAwesomeIcon icon={faStepForward} className="svg" style={{ fontSize: "50px" }} />
+                <FontAwesomeIcon icon={faRandom} className="svg" style={{ fontSize: "50px" }} />
             </section>
 
             <audio ref={audioRef} />
