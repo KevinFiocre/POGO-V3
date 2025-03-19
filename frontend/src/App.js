@@ -7,8 +7,8 @@ const App = () => {
   const tracks = [
     { id: 1, title: "The Night We Met", preview: "/music/The Night We Met.mp3", album: { title: "POGO", cover_medium: "/image/The Night We Met.webp" }, artist: { name: "Lord Huron" } },
     { id: 2, title: "Je te laisserai des mots", preview: "/music/Patrick Watson - Je te laisserai des mots.mp3", album: { title: "POGO", cover_medium: "/image/Je te laisserai des mots.jpg" }, artist: { name: "Patrick Watson" } },
-    { id: 3, title: "Sweater Weather", preview: "/music/The Neighbourhood - Sweater Weather.mp3", album: { title: "POGO", cover_medium: "/image/Sweater Weather.jpeg" }, artist: { name: "The neighbourhood" } },
-    { id: 4, title: "Titre Musique 4", preview: "/music/track4.mp3", album: { title: "POGO", cover_medium: "#" }, artist: { name: "Artiste 4" } },
+    { id: 3, title: "Sweater Weather", preview: "/music/The Neighbourhood - Sweater Weather.mp3", album: { title: "POGO", cover_medium: "/image/Sweater Weather.jpeg" }, artist: { name: "The Neighbourhood" } },
+    { id: 4, title: "Cry", preview: "/music/Cry - Cigarettes After Sex.mp3", album: { title: "POGO", cover_medium: "/image/Cry.jpeg" }, artist: { name: "Cigarettes After Sex" } },
   ];
 
   const creators = [
@@ -44,7 +44,7 @@ const App = () => {
                   className="flex flex-col items-center cursor-pointer"
                   onClick={() => handleSelectTrack(track)}
                 >
-                  <img src={track.img} alt={track.title} className="w-28 h-28 bg-gray-400 rounded-md" />
+                  <img src={track.album.cover_medium} alt={track.title} className="w-28 h-28 bg-gray-400 rounded-md" />
                   <p className="text-sm mt-2">{track.title}</p>
                 </div>
               ))}
