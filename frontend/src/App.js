@@ -1,9 +1,9 @@
-import React from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import MusicPlayer from "./components/MusicPlayer";
 
 const App = () => {
-  const navigate = useNavigate();
+  const [selectedTrack, setSelectedTrack] = useState(null);
+
   const tracks = [
     { id: 1, title: "Titre Musique 1", src: "/music/track1.mp3", img: "#" },
     { id: 2, title: "Titre Musique 2", src: "/music/track2.mp3", img: "#" },
@@ -17,40 +17,54 @@ const App = () => {
     { id: 3, name: "Alexandra", img: "#" },
   ];
 
+  const handleSelectTrack = (track) => {
+    setSelectedTrack(track);
+  };
+
+  const handleBack = () => {
+    setSelectedTrack(null);
+  };
+
   return (
     <div className="flex flex-col items-center min-h-screen bg-black text-white w-full px-4 py-6">
-      {/* Logo */}
-      <img src="#" alt="Logo" className="w-16 h-auto mb-6" />
+      {selectedTrack ? (
+        <MusicPlayer track={selectedTrack} onBack={handleBack} />
+      ) : (
+        <>
+          {/* Logo */}
+          <img src="#" alt="Logo" className="w-16 h-auto mb-6" />
 
-      {/* Section Musique */}
-      <section className="w-full max-w-md">
-        <h2 className="text-lg font-bold mb-4">Sélection de musique expérimentale</h2>
-        <div className="grid grid-cols-2 gap-4">
-          {tracks.map((track) => (
-            <div
-              key={track.id}
-              className="flex flex-col items-center cursor-pointer"
-              onClick={() => navigate("/PlayerMusique", { state: { track } })}
-            >
-              <img src={track.img} alt={track.title} className="w-28 h-28 bg-gray-400 rounded-md" />
-              <p className="text-sm mt-2">{track.title}</p>
+          {/* Section Musique */}
+          <section className="w-full max-w-md">
+            <h2 className="text-lg font-bold mb-4">Sélection de musique expérimentale</h2>
+            <div className="grid grid-cols-2 gap-4">
+              {tracks.map((track) => (
+                <div
+                  key={track.id}
+                  className="flex flex-col items-center cursor-pointer"
+                  onClick={() => handleSelectTrack(track)}
+                >
+                  <img src={track.img} alt={track.title} className="w-28 h-28 bg-gray-400 rounded-md" />
+                  <p className="text-sm mt-2">{track.title}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
+          </section>
 
-      {/* Section Créateurs */}
-      <section className="w-full max-w-md mt-10">
-        <h2 className="text-lg font-bold mb-4">Les créateurs</h2>
-        <div className="grid grid-cols-3 gap-4">
-          {creators.map((creator) => (
-            <div key={creator.id} className="flex flex-col items-center">
-              <img src={creator.img} alt={creator.name} className="w-20 h-20 bg-white rounded-full" />
-              <p className="text-sm mt-2">{creator.name}</p>
+          {/* Section Créateurs */}
+          <section className="w-full max-w-md mt-10">
+            <h2 className="text-lg font-bold mb-4">Les créateurs</h2>
+            <div className="grid grid-cols-3 gap-4">
+              {creators.map((creator) => (
+                <div key={creator.id} className="flex flex-col items-center">
+                  <img src={creator.img} alt={creator.name} className="w-20 h-20 bg-white rounded-full" />
+                  <p className="text-sm mt-2">{creator.name}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
+          </section>
+        </>
+      )}
     </div>
   );
 };
