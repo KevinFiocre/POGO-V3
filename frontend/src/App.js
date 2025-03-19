@@ -32,10 +32,10 @@ const App = () => {
       ) : (
         <>
           {/* Logo */}
-          <img src="frontend/public/image/LOGO.png" alt="Logo" className="w-16 h-auto mb-6 md:w-24" />
+          <img src="/image/LOGO.png" alt="Logo" className="w-16 h-auto mb-6 md:w-24" />
 
           {/* Section Musique avec Scroll Horizontal pleine largeur */}
-          <section className="w-full">
+          <section className="w-full mb-16">
             <h2 className="text-lg font-bold mb-4 text-center md:text-xl lg:text-2xl">
               Sélection de musique expérimentale
             </h2>
@@ -58,7 +58,7 @@ const App = () => {
           </section>
 
           {/* Section Créateurs avec Scroll Horizontal pleine largeur */}
-          <section className="w-full mt-10">
+          <section className="w-full mt-20">
             <h2 className="text-lg font-bold mb-4 text-center md:text-xl lg:text-2xl">Les créateurs</h2>
             <div className="flex overflow-x-scroll whitespace-nowrap space-x-4 px-2 scrollbar-hide w-full">
               {creators.map((creator) => (
