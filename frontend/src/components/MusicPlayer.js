@@ -1,11 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faPause, faStepBackward, faStepForward, faShare, faEllipsisH, faHeart } from "@fortawesome/free-solid-svg-icons";
-
-const ambianceSounds = {
-    Pluie: "/sounds/pluie.mp3",
-    Voiture: "/sounds/voiture.mp3",
-};
+import { faPlay, faPause, faStepBackward, faStepForward, faRepeat, faRandom, faChromecast, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const MusicPlayer = ({ track, onBack }) => {
     const audioRef = useRef(null);
@@ -33,53 +28,51 @@ const MusicPlayer = ({ track, onBack }) => {
     };
 
     return (
-        <div className="deezer-container">
-            <div className="deezer-header">
+        <div className="container">
+            {/* En-tête */}
+            <section className="header">
                 <button onClick={onBack}>
-                    <FontAwesomeIcon icon={faStepBackward} className="svg retour" />
+                    <FontAwesomeIcon icon={faArrowLeft} className="svg" />
                 </button>
-                <div>
-                    <p>ALBUM</p>
-                    <h3>{track?.album?.title || "Nom de l'album"}</h3>
-                </div>
-                <FontAwesomeIcon icon={faEllipsisH} className="svg chrome" />
-            </div>
+                <img className="logo" src="/logo.png" alt="logo" />
+                <FontAwesomeIcon icon={faChromecast} className="svg" />
+            </section>
 
+            {/* Image de l'album */}
             {track?.album?.cover_medium && (
                 <img 
                     src={track.album.cover_medium} 
-                    alt="Page de l'album" 
-                    className="deezer-image"
-                    style={{ width: "80vw", height: "80vw", objectFit: "cover", display: "block", margin: "0 auto", borderRadius: "8px" }} 
+                    alt="Cover" 
+                    className="album-cover"
                 />
             )}
 
-            <div className="deezer-option">
-                <FontAwesomeIcon icon={faShare} className="svg Partage" />
-                <FontAwesomeIcon icon={faEllipsisH} className="svg Option" />
-                <FontAwesomeIcon icon={faHeart} className="svg Like" />
-            </div>
+            {/* Timer */}
+            <section className="timer">
+                <div className="progress-bar">
+                    <div className="progress" style={{ width: `${progress}%` }}></div>
+                </div>
+                <div className="time">0:00 / 3:00</div>
+            </section>
 
-            <div className="deezer-time">{progress}%</div>
+            {/* Infos sur la musique */}
+            <section className="musique">
+                <h2>{track?.title || "Titre"}</h2>
+                <p>{track?.artist?.name || "Nom de l'artiste"}</p>
+            </section>
 
-            <div className="deezer-music">
-                <p>{track?.title || "Titre de la musique"}</p>
-                <p>{track?.artist?.name || "Artiste"}</p>
-            </div>
-
-            <div className="deezer-control">
-                <FontAwesomeIcon icon={faStepBackward} className="svg Precedent" />
-                <button onClick={togglePlay} className="Play" style={{ width: "60px", height: "60px", fontSize: "32px" }}>
-                    <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
-                </button>
-                <FontAwesomeIcon icon={faStepForward} className="svg Suivant" />
-            </div>
-
-            <div className="deezer-footer">
-                <FontAwesomeIcon icon={faEllipsisH} />
-                <div className="Timer">0:00 / 3:00</div>
-                <FontAwesomeIcon icon={faEllipsisH} className="svg Album" />
-            </div>
+            {/* Contrôles */}
+            <section className="control">
+                <FontAwesomeIcon icon={faRepeat} className="svg" />
+                <div className="player">
+                    <FontAwesomeIcon icon={faStepBackward} className="svg" />
+                    <button onClick={togglePlay} className="play">
+                        <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
+                    </button>
+                    <FontAwesomeIcon icon={faStepForward} className="svg" />
+                </div>
+                <FontAwesomeIcon icon={faRandom} className="svg" />
+            </section>
 
             <audio ref={audioRef} />
         </div>
