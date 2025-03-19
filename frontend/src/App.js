@@ -5,10 +5,10 @@ const App = () => {
   const [selectedTrack, setSelectedTrack] = useState(null);
 
   const tracks = [
-    { id: 1, title: "The Night We Met", preview: "music/The Night We Met.mp3", album: { title: "Album 1", cover_medium: "#" }, artist: { name: "Lord Huron" } },
-    { id: 2, title: "Titre Musique 2", preview: "/music/track2.mp3", album: { title: "Album 2", cover_medium: "#" }, artist: { name: "Artiste 2" } },
-    { id: 3, title: "Titre Musique 3", preview: "/music/track3.mp3", album: { title: "Album 3", cover_medium: "#" }, artist: { name: "Artiste 3" } },
-    { id: 4, title: "Titre Musique 4", preview: "/music/track4.mp3", album: { title: "Album 4", cover_medium: "#" }, artist: { name: "Artiste 4" } },
+    { id: 1, title: "The Night We Met", preview: "/music/The Night We Met.mp3", album: { title: "POGO", cover_medium: "/image/The Night We Met.webp" }, artist: { name: "Lord Huron" } },
+    { id: 2, title: "Je te laisserai des mots", preview: "/music/Patrick Watson - Je te laisserai des mots.mp3", album: { title: "POGO", cover_medium: "/image/Je te laisserai des mots.jpg" }, artist: { name: "Patrick Watson" } },
+    { id: 3, title: "Sweater Weather", preview: "/music/The Neighbourhood - Sweater Weather.mp3", album: { title: "POGO", cover_medium: "/image/Sweater Weather.jpeg" }, artist: { name: "The neighbourhood" } },
+    { id: 4, title: "Titre Musique 4", preview: "/music/track4.mp3", album: { title: "POGO", cover_medium: "#" }, artist: { name: "Artiste 4" } },
   ];
 
   const creators = [
