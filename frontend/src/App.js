@@ -49,7 +49,7 @@ const App = () => {
                   <img 
                     src={track.album.cover_medium} 
                     alt={track.title} 
-                    className="w-1/4 aspect-square bg-gray-400 rounded-md object-cover" 
+                    className="w-[500px] h-[500px] bg-gray-400 rounded-md object-cover sm:w-[200px] sm:h-[200px]" 
                   />
                   <p className="text-sm mt-2 text-center">{track.title}</p>
                 </div>
@@ -66,7 +66,7 @@ const App = () => {
                   <img 
                     src={creator.img} 
                     alt={creator.name} 
-                    className="w-full h-auto bg-white rounded-full" 
+                    className="w-[500px] h-[500px] bg-white rounded-full sm:w-[200px] sm:h-[200px]" 
                   />
                   <p className="text-sm mt-2 text-center">{creator.name}</p>
                 </div>
