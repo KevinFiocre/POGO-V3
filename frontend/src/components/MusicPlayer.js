@@ -19,7 +19,6 @@ const MusicPlayer = ({ track, onBack }) => {
             audioRef.current.play().catch(error => console.log("Erreur de lecture audio :", error));
             setIsPlaying(true);
         }
-        console.log("Track reçu :", track);
     }, [track]);
 
     const togglePlay = () => {

@@ -5,16 +5,16 @@ const App = () => {
   const [selectedTrack, setSelectedTrack] = useState(null);
 
   const tracks = [
-    { id: 1, title: "Titre Musique 1", src: "/music/track1.mp3", img: "#" },
-    { id: 2, title: "Titre Musique 2", src: "/music/track2.mp3", img: "#" },
-    { id: 3, title: "Titre Musique 3", src: "/music/track3.mp3", img: "#" },
-    { id: 4, title: "Titre Musique 4", src: "/music/track4.mp3", img: "#" },
+    { id: 1, title: "The Night We Met", preview: "music/The Night We Met.mp3", album: { title: "Album 1", cover_medium: "#" }, artist: { name: "Lord Huron" } },
+    { id: 2, title: "Titre Musique 2", preview: "/music/track2.mp3", album: { title: "Album 2", cover_medium: "#" }, artist: { name: "Artiste 2" } },
+    { id: 3, title: "Titre Musique 3", preview: "/music/track3.mp3", album: { title: "Album 3", cover_medium: "#" }, artist: { name: "Artiste 3" } },
+    { id: 4, title: "Titre Musique 4", preview: "/music/track4.mp3", album: { title: "Album 4", cover_medium: "#" }, artist: { name: "Artiste 4" } },
   ];
 
   const creators = [
-    { id: 1, name: "Kevin", img: "#" },
-    { id: 2, name: "Lucie", img: "#" },
-    { id: 3, name: "Alexandra", img: "#" },
+    { id: 1, name: "Kevin", img: "frontend/public/image/kevin.png" },
+    { id: 2, name: "Lucie", img: "frontend/public/image/lucie.jpeg" },
+    { id: 3, name: "Alexandra", img: "frontend/public/image/alexandra.jpeg" },
   ];
 
   const handleSelectTrack = (track) => {
