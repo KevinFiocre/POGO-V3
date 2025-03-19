@@ -12,7 +12,7 @@ const App = () => {
   ];
 
   const creators = [
-    { id: 1, name: "Kevin", img: "/image/kevin.png", link: "https://www.instagram.com/kevin" },
+    { id: 1, name: "Kevin", img: "/image/kevin.png", link: "https://www.instagram.com/kd3.6.7/" },
     { id: 2, name: "Lucie", img: "/image/lucie.jpeg", link: "https://www.linkedin.com/in/lucie" },
     { id: 3, name: "Alexandra", img: "/image/alexandra.jpeg", link: "https://www.instagram.com/alexandra" },
   ];
