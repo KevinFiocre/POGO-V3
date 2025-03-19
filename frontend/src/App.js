@@ -26,7 +26,7 @@ const App = () => {
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-black text-white w-full px-4 py-6">
+    <div className="flex flex-col items-center min-h-screen bg-black text-white w-full px-0 py-6">
       {selectedTrack ? (
         <MusicPlayer track={selectedTrack} onBack={handleBack} />
       ) : (
@@ -34,12 +34,12 @@ const App = () => {
           {/* Logo */}
           <img src="frontend/public/image/LOGO.png" alt="Logo" className="w-16 h-auto mb-6 md:w-24" />
 
-          {/* Section Musique */}
-          <section className="w-full max-w-xs md:max-w-lg lg:max-w-2xl">
+          {/* Section Musique avec Scroll Horizontal pleine largeur */}
+          <section className="w-full">
             <h2 className="text-lg font-bold mb-4 text-center md:text-xl lg:text-2xl">
               Sélection de musique expérimentale
             </h2>
-            <div className="flex overflow-x-auto space-x-4 px-2 scrollbar-hide">
+            <div className="flex overflow-x-scroll whitespace-nowrap space-x-4 px-2 scrollbar-hide w-full">
               {tracks.map((track) => (
                 <div
                   key={track.id}
@@ -49,26 +49,26 @@ const App = () => {
                   <img 
                     src={track.album.cover_medium} 
                     alt={track.title} 
-                    className="w-28 h-28 bg-gray-400 rounded-md md:w-32 md:h-32 lg:w-40 lg:h-40" 
+                    className="w-full h-auto bg-gray-400 rounded-md" 
                   />
-                  <p className="text-sm mt-2 text-center md:text-base lg:text-lg">{track.title}</p>
+                  <p className="text-sm mt-2 text-center">{track.title}</p>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* Section Créateurs */}
-          <section className="w-full max-w-xs md:max-w-lg lg:max-w-2xl mt-10">
+          {/* Section Créateurs avec Scroll Horizontal pleine largeur */}
+          <section className="w-full mt-10">
             <h2 className="text-lg font-bold mb-4 text-center md:text-xl lg:text-2xl">Les créateurs</h2>
-            <div className="flex overflow-x-auto space-x-4 px-2 scrollbar-hide">
+            <div className="flex overflow-x-scroll whitespace-nowrap space-x-4 px-2 scrollbar-hide w-full">
               {creators.map((creator) => (
                 <div key={creator.id} className="flex flex-col items-center w-1/4 min-w-[25%]">
                   <img 
                     src={creator.img} 
                     alt={creator.name} 
-                    className="w-20 h-20 bg-white rounded-full md:w-24 md:h-24 lg:w-28 lg:h-28" 
+                    className="w-full h-auto bg-white rounded-full" 
                   />
-                  <p className="text-sm mt-2 text-center md:text-base lg:text-lg">{creator.name}</p>
+                  <p className="text-sm mt-2 text-center">{creator.name}</p>
                 </div>
               ))}
             </div>
