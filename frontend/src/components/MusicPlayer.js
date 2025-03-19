@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faPause, faStepBackward, faStepForward, faRepeat, faRandom, faChromecast, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faPlay, faPause, faStepBackward, faStepForward, faRepeat, faRandom, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faChromecast } from "@fortawesome/free-brands-svg-icons";
 
 const MusicPlayer = ({ track, onBack }) => {
     const audioRef = useRef(null);
