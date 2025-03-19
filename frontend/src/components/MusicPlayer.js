@@ -33,10 +33,10 @@ const MusicPlayer = ({ track, onBack }) => {
             {/* En-tête */}
             <section className="header">
                 <button onClick={onBack}>
-                    <FontAwesomeIcon icon={faArrowLeft} className="svg" />
+                    <FontAwesomeIcon icon={faArrowLeft} className="svg" style={{ fontSize: "64px" }} />
                 </button>
                 <img className="logo" src="/logo.png" alt="logo" />
-                <FontAwesomeIcon icon={faChromecast} className="svg" />
+                <FontAwesomeIcon icon={faChromecast} className="svg" style={{ fontSize: "64px" }} />
             </section>
 
             {/* Image de l'album */}
@@ -45,6 +45,7 @@ const MusicPlayer = ({ track, onBack }) => {
                     src={track.album.cover_medium} 
                     alt="Cover" 
                     className="album-cover"
+                    style={{ width: "500px", height: "500px", objectFit: "cover" }}
                 />
             )}
 
@@ -64,15 +65,15 @@ const MusicPlayer = ({ track, onBack }) => {
 
             {/* Contrôles */}
             <section className="control">
-                <FontAwesomeIcon icon={faRepeat} className="svg" />
+                <FontAwesomeIcon icon={faRepeat} className="svg" style={{ fontSize: "64px" }} />
                 <div className="player">
-                    <FontAwesomeIcon icon={faStepBackward} className="svg" />
+                    <FontAwesomeIcon icon={faStepBackward} className="svg" style={{ fontSize: "64px" }} />
                     <button onClick={togglePlay} className="play">
-                        <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
+                        <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} style={{ fontSize: "64px" }} />
                     </button>
-                    <FontAwesomeIcon icon={faStepForward} className="svg" />
+                    <FontAwesomeIcon icon={faStepForward} className="svg" style={{ fontSize: "64px" }} />
                 </div>
-                <FontAwesomeIcon icon={faRandom} className="svg" />
+                <FontAwesomeIcon icon={faRandom} className="svg" style={{ fontSize: "64px" }} />
             </section>
 
             <audio ref={audioRef} />
