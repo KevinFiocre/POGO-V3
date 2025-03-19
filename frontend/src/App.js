@@ -39,11 +39,11 @@ const App = () => {
             <h2 className="text-lg font-bold mb-4 text-center md:text-xl lg:text-2xl">
               Sélection de musique expérimentale
             </h2>
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+            <div className="flex overflow-x-auto space-x-4 px-2 scrollbar-hide">
               {tracks.map((track) => (
                 <div
                   key={track.id}
-                  className="flex flex-col items-center cursor-pointer"
+                  className="flex flex-col items-center cursor-pointer w-1/4 min-w-[25%]"
                   onClick={() => handleSelectTrack(track)}
                 >
                   <img 
@@ -60,9 +60,9 @@ const App = () => {
           {/* Section Créateurs */}
           <section className="w-full max-w-xs md:max-w-lg lg:max-w-2xl mt-10">
             <h2 className="text-lg font-bold mb-4 text-center md:text-xl lg:text-2xl">Les créateurs</h2>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="flex overflow-x-auto space-x-4 px-2 scrollbar-hide">
               {creators.map((creator) => (
-                <div key={creator.id} className="flex flex-col items-center">
+                <div key={creator.id} className="flex flex-col items-center w-1/4 min-w-[25%]">
                   <img 
                     src={creator.img} 
                     alt={creator.name} 
