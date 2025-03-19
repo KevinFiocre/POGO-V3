@@ -68,6 +68,7 @@ const App = () => {
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="flex flex-col items-center w-1/4 min-w-[25%]"
+                  onClick={() => console.log(`Ouverture du lien: ${creator.link}`)}
                 >
                   <img 
                     src={creator.img} 
