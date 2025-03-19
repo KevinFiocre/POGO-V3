@@ -12,9 +12,9 @@ const App = () => {
   ];
 
   const creators = [
-    { id: 1, name: "Kevin", img: "frontend/public/image/kevin.png" },
-    { id: 2, name: "Lucie", img: "frontend/public/image/lucie.jpeg" },
-    { id: 3, name: "Alexandra", img: "frontend/public/image/alexandra.jpeg" },
+    { id: 1, name: "Kevin", img: "/image/kevin.png" },
+    { id: 2, name: "Lucie", img: "/image/lucie.jpeg" },
+    { id: 3, name: "Alexandra", img: "/image/alexandra.jpeg" },
   ];
 
   const handleSelectTrack = (track) => {
