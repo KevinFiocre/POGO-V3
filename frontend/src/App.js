@@ -32,33 +32,43 @@ const App = () => {
       ) : (
         <>
           {/* Logo */}
-          <img src="#" alt="Logo" className="w-16 h-auto mb-6" />
+          <img src="frontend/public/image/LOGO.png" alt="Logo" className="w-16 h-auto mb-6 md:w-24" />
 
           {/* Section Musique */}
-          <section className="w-full max-w-md">
-            <h2 className="text-lg font-bold mb-4">Sélection de musique expérimentale</h2>
-            <div className="grid grid-cols-2 gap-4">
+          <section className="w-full max-w-xs md:max-w-lg lg:max-w-2xl">
+            <h2 className="text-lg font-bold mb-4 text-center md:text-xl lg:text-2xl">
+              Sélection de musique expérimentale
+            </h2>
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
               {tracks.map((track) => (
                 <div
                   key={track.id}
                   className="flex flex-col items-center cursor-pointer"
                   onClick={() => handleSelectTrack(track)}
                 >
-                  <img src={track.album.cover_medium} alt={track.title} className="w-28 h-28 bg-gray-400 rounded-md" />
-                  <p className="text-sm mt-2">{track.title}</p>
+                  <img 
+                    src={track.album.cover_medium} 
+                    alt={track.title} 
+                    className="w-28 h-28 bg-gray-400 rounded-md md:w-32 md:h-32 lg:w-40 lg:h-40" 
+                  />
+                  <p className="text-sm mt-2 text-center md:text-base lg:text-lg">{track.title}</p>
                 </div>
               ))}
             </div>
           </section>
 
           {/* Section Créateurs */}
-          <section className="w-full max-w-md mt-10">
-            <h2 className="text-lg font-bold mb-4">Les créateurs</h2>
+          <section className="w-full max-w-xs md:max-w-lg lg:max-w-2xl mt-10">
+            <h2 className="text-lg font-bold mb-4 text-center md:text-xl lg:text-2xl">Les créateurs</h2>
             <div className="grid grid-cols-3 gap-4">
               {creators.map((creator) => (
                 <div key={creator.id} className="flex flex-col items-center">
-                  <img src={creator.img} alt={creator.name} className="w-20 h-20 bg-white rounded-full" />
-                  <p className="text-sm mt-2">{creator.name}</p>
+                  <img 
+                    src={creator.img} 
+                    alt={creator.name} 
+                    className="w-20 h-20 bg-white rounded-full md:w-24 md:h-24 lg:w-28 lg:h-28" 
+                  />
+                  <p className="text-sm mt-2 text-center md:text-base lg:text-lg">{creator.name}</p>
                 </div>
               ))}
             </div>
