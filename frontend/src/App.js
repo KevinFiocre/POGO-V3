@@ -1,65 +1,58 @@
-import React, { useState } from "react";
-import AmbianceSelector from "./components/AmbianceSelector";
-import MusicPlayer from "./components/MusicPlayer";
+import React from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const App = () => {
-    const [selectedTrack, setSelectedTrack] = useState(null);
-    const [showPlayer, setShowPlayer] = useState(false);
+  const navigate = useNavigate();
+  const tracks = [
+    { id: 1, title: "Titre Musique 1", src: "/music/track1.mp3", img: "#" },
+    { id: 2, title: "Titre Musique 2", src: "/music/track2.mp3", img: "#" },
+    { id: 3, title: "Titre Musique 3", src: "/music/track3.mp3", img: "#" },
+    { id: 4, title: "Titre Musique 4", src: "/music/track4.mp3", img: "#" },
+  ];
 
-    // Liste de morceaux statiques
-    const tracks = [
-        { id: 1, title: "Relaxing Waves", src: "/music/relaxing-waves.mp3" },
-        { id: 2, title: "Calm Piano", src: "/music/calm-piano.mp3" },
-        { id: 3, title: "Lo-Fi Beats", src: "/music/lofi-beats.mp3" },
-        { id: 4, title: "Nature Sounds", src: "/music/nature-sounds.mp3" },
-        { id: 5, title: "Deep Focus", src: "/music/deep-focus.mp3" },
-    ];
+  const creators = [
+    { id: 1, name: "Kevin", img: "#" },
+    { id: 2, name: "Lucie", img: "#" },
+    { id: 3, name: "Alexandra", img: "#" },
+  ];
 
-    const handleSelectTrack = (track) => {
-        setSelectedTrack(track);
-        setShowPlayer(true);
-    };
+  return (
+    <div className="flex flex-col items-center min-h-screen bg-black text-white w-full px-4 py-6">
+      {/* Logo */}
+      <img src="#" alt="Logo" className="w-16 h-auto mb-6" />
 
-    return (
-        <div className="flex flex-col items-center min-h-screen bg-gray-900 text-white w-full">
-            <div className="bg-gray-800 shadow-lg rounded-lg p-6 w-full max-w-md text-center relative">
-                {showPlayer ? (
-                    <>
-                        {/* Bouton Retour */}
-                        <button 
-                            onClick={() => setShowPlayer(false)}
-                            className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg absolute top-4 left-4"
-                        >
-                            ⬅️ Retour
-                        </button>
-
-                        {/* Lecteur de musique */}
-                        <MusicPlayer track={selectedTrack} />
-
-                        {/* Sélection du son d’ambiance avec scroll */}
-                        <div className="overflow-x-scroll flex space-x-4 p-4 bg-gray-700 rounded-lg mt-4">
-                            <AmbianceSelector onSelect={() => {}} />
-                        </div>
-                    </>
-                ) : (
-                    <>
-                        <h2 className="text-lg font-bold mb-4">Choisissez une musique</h2>
-                        <div className="flex flex-col space-y-4">
-                            {tracks.map((track) => (
-                                <button
-                                    key={track.id}
-                                    onClick={() => handleSelectTrack(track)}
-                                    className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg"
-                                >
-                                    {track.title}
-                                </button>
-                            ))}
-                        </div>
-                    </>
-                )}
+      {/* Section Musique */}
+      <section className="w-full max-w-md">
+        <h2 className="text-lg font-bold mb-4">Sélection de musique expérimentale</h2>
+        <div className="grid grid-cols-2 gap-4">
+          {tracks.map((track) => (
+            <div
+              key={track.id}
+              className="flex flex-col items-center cursor-pointer"
+              onClick={() => navigate("/PlayerMusique", { state: { track } })}
+            >
+              <img src={track.img} alt={track.title} className="w-28 h-28 bg-gray-400 rounded-md" />
+              <p className="text-sm mt-2">{track.title}</p>
             </div>
+          ))}
         </div>
-    );
+      </section>
+
+      {/* Section Créateurs */}
+      <section className="w-full max-w-md mt-10">
+        <h2 className="text-lg font-bold mb-4">Les créateurs</h2>
+        <div className="grid grid-cols-3 gap-4">
+          {creators.map((creator) => (
+            <div key={creator.id} className="flex flex-col items-center">
+              <img src={creator.img} alt={creator.name} className="w-20 h-20 bg-white rounded-full" />
+              <p className="text-sm mt-2">{creator.name}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
 };
 
 export default App;
