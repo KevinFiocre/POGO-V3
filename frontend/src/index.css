@@ -120,3 +120,175 @@ body{
     line-height: 150%; /* 16.5px */
     letter-spacing: 0.22px;
     }
+
+  .Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    flex: 1 0 0;
+    max-width: 400px; /* Empêcher un trop grand étirement */
+    margin: auto; /* Centrer dans la page */
+    padding: 20px; /* Ajouter du padding pour l’aération */
+  }
+
+  img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+
+  /* HEADER */
+  .MP-Head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+  }
+
+  /* COVER */
+  .MP-Cover {
+    height: 350px;
+    width: 100%;
+    border-radius: 8px;
+    background: #D9D9D9;
+  }
+
+  /* NOM DE LA MUSIQUE */
+  .MP-Nom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+  }
+
+  .MP-Nom-Titre {
+    color: #FFF;
+    text-align: center;
+    font-family: Oxygen;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.36px;
+  }
+
+  .MP-Nom-Nom {
+    color: #FFF;
+    font-family: Oxygen;
+    font-size: 15.6px;
+    font-weight: 400;
+    letter-spacing: 0.312px;
+  }
+
+  /* CONTROLES */
+  .MP-Control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .MP-Control img {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .MP-Control img:hover {
+    transform: scale(1.1);
+  }
+
+  /* BRUITS D'AMBIANCE */
+  .MP-Ambiant {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    background: #1D0D27;
+  }
+
+  .MP-Ambiant-Head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .MP-Ambiant-Bruit {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    background: #3D1C52;
+  }
+
+  .MP-Ambiant-Bruit-Image {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    background: #FFF;
+  }
+
+  .MP-Ambiant-Bruit-Info {
+    flex: 1;
+  }
+
+  .MP-Ambiant-Volume {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* LISTE DES BRUITS */
+  .MP-Ambiant-List {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .MP-Ambiant-List-Bouton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    padding: 8px;
+    border-radius: 12px;
+    border: 2px solid #A238FF;
+    background: #A238FF;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .MP-Ambiant-List-Bouton:hover {
+    background: #8B2ECC;
+  }
+
+  /* BOUTON MODIFIER */
+  .MP-Ambiant-Bouton button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #FF5733;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .MP-Ambiant-Bouton button:hover {
+    background: #D94321;
+  }
