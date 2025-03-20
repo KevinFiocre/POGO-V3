@@ -27,14 +27,13 @@ const MusicPlayer = ({ track, onBack }) => {
     };
 
     return (
-        <div className="container">
+        <div className="Container">
             {/* En-tête */}
-            <section className="header">
+            <section className="MP-Head">
                 <button onClick={onBack}>
-                    {/* Icon removed */}
+                <img src="/svg/reply.svg" alt="Retour" />
                 </button>
-                <h1>AMBIANT</h1>
-                {/* Icon removed */}
+                <img src="/image/LOGO.png" alt="Logo" className="LOGO" />
             </section>
 
             {/* Image de l'album */}
@@ -42,18 +41,18 @@ const MusicPlayer = ({ track, onBack }) => {
                 <img 
                     src={track.album.cover_medium} 
                     alt="Cover" 
-                    className="album-cover"
+                    className="MP-Cover"
                 />
             )}
 
             {/* Infos sur la musique */}
-            <section className="musique">
+            <section className="MP-Nom">
                 <h2>{track?.title || "Titre"}</h2>
                 <p>{track?.artist?.name || "Nom de l'artiste"}</p>
             </section>
 
             {/* Timer */}
-            <section className="timer">
+            <section className="MP-Timer">
                 <div className="progress-bar">
                     <div className="progress" style={{ width: `${progress}%` }}></div>
                 </div>
@@ -61,14 +60,51 @@ const MusicPlayer = ({ track, onBack }) => {
             </section>
 
             {/* Contrôles */}
-            <section className="control">
-                {/* Icon removed */}
-                {/* Icon removed */}
+            <section className="MP-Control">
+                <img src="/svg/repeat.svg" alt="Repeter" />
+                <img src="/svg/previous.svg" alt="Précédent" />
                 <button onClick={togglePlay} className="play">
-                    {/* Icon removed */}
+                   <img src={isPlaying ? "/svg/pause.svg" : "/svg/play.svg"} alt="Lecture" />
                 </button>
-                {/* Icon removed */}
-                {/* Icon removed */}
+                <img src="/svg/next.svg" alt="Suivant" />
+                <img src="/svg/shuffle.svg" alt="Mélanger" />
+            </section>
+            
+             {/* Bruit d'ambiance */}
+            <section className="MP-Ambiant">
+                <div className="MP-Ambiant-Head">
+                    <h2>Bruit d'ambiance</h2>
+                    <button></button>
+                </div>
+                <div className="MP-Ambiant-Bruit">
+                    <img className="MP-Ambiant-Bruit-Image" src="" alt="cover" />
+                    <div className="MP-Ambiant-Bruit-Info">
+                        <h3>Bruit d’ambiance</h3>
+                        <p>Artiste</p>
+                    </div>
+                    <div className="MP-Ambiant-Volume">
+                        <img src="volume_off" alt="Pas de son" />
+                        <div></div>
+                        <img src="volume_on" alt="" />
+                    </div>
+                </div>
+                <div className="MP-Ambiant-List">
+                    <div className="MP-Ambiant-List-Bouton">
+                        <img src="" alt="Icon-Bruit" />
+                        <p>Pluie</p>
+                    </div>
+                    <div className="MP-Ambiant-List-Bouton">
+                        <img src="" alt="Icon-Bruit" />
+                        <p>Forêt</p>
+                    </div>
+                    <div className="MP-Ambiant-List-Bouton">
+                        <img src="" alt="Icon-Bruit" />
+                        <p>Oiseaux</p>
+                    </div>
+                    <div className="MP-Ambiant-Bouton">
+                        <button>Modifier</button>
+                    </div>
+                </div>
             </section>
 
             <audio ref={audioRef} />
