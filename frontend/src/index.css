@@ -293,3 +293,10 @@ body{
   .MP-Ambiant-Bouton button:hover {
     background: #D94321;
   }
+
+@media screen and (max-width: 600px) {
+    .Container {
+        max-width: 100%; /* Prend toute la largeur de l'écran */
+        padding: 16px; /* Ajuste légèrement le padding */
+    }
+}
