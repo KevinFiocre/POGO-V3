@@ -38,7 +38,8 @@ body{
     display: flex;
     gap: 6px;
     align-self: stretch;
-    overflow: hidden; /* Cache le scroll */
+    overflow-y: auto;
+    overflow-x: scroll;
     scroll-snap-type: x mandatory; /* Active le slider */
     scroll-behavior: smooth; /* Rend le défilement fluide */
     white-space: nowrap; /* Assure que les éléments restent en ligne */
@@ -84,7 +85,7 @@ body{
     .H-Createur-Liste{
     display: flex;
     align-items: flex-start;
-    gap: 6px;
+    gap: 32px;
     align-self: stretch;
     }
     
