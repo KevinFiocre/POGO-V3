@@ -8,6 +8,9 @@ body{
     align-items: center;
     gap: 30px;
     flex: 1 0 0;
+    max-width: 400px; /* Empêcher un trop grand étirement */
+    margin: auto; /* Centrer dans la page */
+    padding: 20px; /* Ajouter du */
     }
     
     .LOGO{
