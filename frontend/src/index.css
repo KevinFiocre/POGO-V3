@@ -36,9 +36,10 @@ body{
     
     .H-Musique-Liste{
     display: flex;
-    gap: 6px;
+    gap: 32px;
     align-self: stretch;
-    overflow: hidden; /* Cache le scroll */
+    overflow-y: auto;
+    overflow-x: scroll;
     scroll-snap-type: x mandatory; /* Active le slider */
     scroll-behavior: smooth; /* Rend le défilement fluide */
     white-space: nowrap; /* Assure que les éléments restent en ligne */
@@ -59,6 +60,7 @@ body{
     align-self: stretch;
     border-radius: 2px;
     background: #D9D9D9;
+    object-fit: cover;
     }
     
     .H-Musique-Liste-Affiche-Titre{
@@ -66,7 +68,7 @@ body{
     color: #FFF;
     text-align: center;
     font-family: Oxygen;
-    font-size: 18px;
+    font-size: 24px;
     font-style: normal;
     font-weight: 400;
     line-height: 150%; /* 16.5px */
@@ -84,7 +86,7 @@ body{
     .H-Createur-Liste{
     display: flex;
     align-items: flex-start;
-    gap: 6px;
+    gap: 32px;
     align-self: stretch;
     }
     
@@ -101,6 +103,7 @@ body{
     align-self: stretch;
     border-radius: 300px;
     background: #FFF;
+    object-fit: cover;
     }
     
     .H-Createur-Liste-Affiche-Nom{
@@ -108,7 +111,7 @@ body{
     color: #FFF;
     text-align: center;
     font-family: Oxygen;
-    font-size: 11px;
+    font-size: 24px;
     font-style: normal;
     font-weight: 400;
     line-height: 150%; /* 16.5px */
