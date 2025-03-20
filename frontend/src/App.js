@@ -49,9 +49,9 @@ const App = () => {
                   <img 
                     src={track.album.cover_medium} 
                     alt={track.title} 
-                    className="" 
+                    className="H-Musique-Liste-Affiche-Image" 
                   />
-                  <p className="">{track.title}</p>
+                  <p className="H-Musique-Liste-Affiche-Titre">{track.title}</p>
                 </div>
               ))}
             </div>
