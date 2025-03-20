@@ -132,7 +132,7 @@ body{
     padding: 20px; /* Ajouter du padding pour l’aération */
   }
 
-  img {
+  svg {
     width: 32px;
     height: 32px;
     object-fit: contain;

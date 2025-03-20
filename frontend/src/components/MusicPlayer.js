@@ -31,7 +31,9 @@ const MusicPlayer = ({ track, onBack }) => {
             {/* En-tête */}
             <section className="MP-Head">
                 <button onClick={onBack}>
-                <img src="/svg/reply.svg" alt="Retour" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M12 2L1 12h3v8h8v-3h4v3h8v-8h3L12 2z"/>
+                    </svg>
                 </button>
                 <img src="/image/LOGO.png" alt="Logo" className="LOGO" />
             </section>
@@ -61,16 +63,32 @@ const MusicPlayer = ({ track, onBack }) => {
 
             {/* Contrôles */}
             <section className="MP-Control">
-                <img src="/svg/repeat.svg" alt="Repeter" />
-                <img src="/svg/previous.svg" alt="Précédent" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M6 6h12v12H6z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
                 <button onClick={togglePlay} className="play">
-                   <img src={isPlaying ? "/svg/pause.svg" : "/svg/play.svg"} alt="Lecture" />
+                    {isPlaying ? (
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M6 4h4v16H6zm8 0h4v16h-4z"/>
+                        </svg>
+                    ) : (
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    )}
                 </button>
-                <img src="/svg/next.svg" alt="Suivant" />
-                <img src="/svg/shuffle.svg" alt="Mélanger" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M12 2L1 12h3v8h8v-3h4v3h8v-8h3L12 2z"/>
+                </svg>
             </section>
             
-             {/* Bruit d'ambiance */}
+            {/* Bruit d'ambiance */}
             <section className="MP-Ambiant">
                 <div className="MP-Ambiant-Head">
                     <h2>Bruit d'ambiance</h2>
