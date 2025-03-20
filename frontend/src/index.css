@@ -1,3 +1,113 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+body{
+    background: #000;;
+    }
+    
+    .Container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    flex: 1 0 0;
+    }
+    
+    .LOGO{
+    width: 66.653px;
+    height: 15.4px;
+    }
+    
+    h2 {
+    align-self: stretch;
+    color: #FFF;
+    font-family: Oxygen;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 27px */
+    letter-spacing: 0.36px;
+    }
+    
+    .H-Musique{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    align-self: stretch;
+    }
+    
+    
+    
+    .H-Musique-Liste{
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    align-self: stretch;
+    }
+    
+    .H-Musique-Liste-Affiche{
+    display: flex;
+    width: 115px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    }
+    
+    .H-Musique-Liste-Affiche-Image{
+    height: 115px;
+    align-self: stretch;
+    border-radius: 2px;
+    background: #D9D9D9;
+    }
+    
+    .H-Musique-Liste-Affiche-Titre{
+    align-self: stretch;
+    color: #FFF;
+    text-align: center;
+    font-family: Oxygen;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 16.5px */
+    letter-spacing: 0.22px;
+    }
+    
+    .H-Createur{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    align-self: stretch;
+    }
+    
+    .H-Createur-Liste{
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    align-self: stretch;
+    }
+    
+    .H-Createur-Liste-Affiche{
+    display: flex;
+    width: 115px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    }
+    
+    .H-Createur-Liste-Affiche-Image{
+    height: 115px;
+    align-self: stretch;
+    border-radius: 300px;
+    background: #FFF;
+    }
+    
+    .H-Createur-Liste-Affiche-Nom{
+    align-self: stretch;
+    color: #FFF;
+    text-align: center;
+    font-family: Oxygen;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 16.5px */
+    letter-spacing: 0.22px;
+    }

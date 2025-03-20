@@ -26,56 +26,56 @@ const App = () => {
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-black text-white w-full px-0 py-6">
+    <div className="Container">
       {selectedTrack ? (
         <MusicPlayer track={selectedTrack} onBack={handleBack} />
       ) : (
         <>
           {/* Logo */}
-          <img src="/image/LOGO.png" alt="Logo" className="w-16 h-auto mb-6 md:w-24" />
+          <img src="/image/LOGO.png" alt="Logo" className="LOGO" />
 
           {/* Section Musique avec Scroll Horizontal pleine largeur */}
-          <section className="w-full mb-16">
-            <h2 className="text-lg font-bold mb-4 text-center md:text-xl lg:text-2xl">
+          <section className="H-Musique">
+            <h2>
               Sélection de musique expérimentale
             </h2>
-            <div className="flex overflow-x-scroll whitespace-nowrap space-x-4 px-2 scrollbar-hide w-full">
+            <div className="H-Musique-Liste">
               {tracks.map((track) => (
                 <div
                   key={track.id}
-                  className="flex flex-col items-center cursor-pointer w-1/4 min-w-[25%]"
+                  className="H-Musique-Liste-Affiche"
                   onClick={() => handleSelectTrack(track)}
                 >
                   <img 
                     src={track.album.cover_medium} 
                     alt={track.title} 
-                    className="w-[500px] h-[500px] bg-gray-400 rounded-md object-cover sm:w-[200px] sm:h-[200px]" 
+                    className="" 
                   />
-                  <p className="text-sm mt-2 text-center">{track.title}</p>
+                  <p className="">{track.title}</p>
                 </div>
               ))}
             </div>
           </section>
 
           {/* Section Créateurs avec Scroll Horizontal pleine largeur */}
-          <section className="w-full mt-20">
-            <h2 className="text-lg font-bold mb-4 text-center md:text-xl lg:text-2xl">Les créateurs</h2>
-            <div className="flex overflow-x-scroll whitespace-nowrap space-x-4 px-2 scrollbar-hide w-full">
+          <section className="H-Createur">
+            <h2 className="">Les créateurs</h2>
+            <div className="H-Createur-Liste">
               {creators.map((creator) => (
                 <a 
                   key={creator.id} 
                   href={creator.link} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex flex-col items-center w-1/4 min-w-[25%]"
+                  className="H-Createur-Liste-Affiche"
                   onClick={() => console.log(`Ouverture du lien: ${creator.link}`)}
                 >
                   <img 
                     src={creator.img} 
                     alt={creator.name} 
-                    className="w-[500px] h-[500px] bg-white rounded-full sm:w-[200px] sm:h-[200px]" 
+                    className="H-Createur-Liste-Affiche-Image" 
                   />
-                  <p className="text-sm mt-2 text-center">{creator.name}</p>
+                  <p className="H-Createur-Liste-Affiche-Nom">{creator.name}</p>
                 </a>
               ))}
             </div>
