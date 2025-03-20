@@ -52,18 +52,18 @@ body{
     flex: 0 0 auto; /* Empêche les éléments de s'étirer */
     scroll-snap-align: start; /* Fait en sorte que chaque élément s'aligne dans le viewport */
     display: flex;
-    width: 30vw;
+    width: 60%;
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
     }
     
     .H-Musique-Liste-Affiche-Image{
-    height: 30vw;
     align-self: stretch;
     border-radius: 2px;
     background: #D9D9D9;
     object-fit: cover;
+    aspect-ratio: 1/1;
     }
     
     .H-Musique-Liste-Affiche-Titre{
@@ -95,14 +95,14 @@ body{
     
     .H-Createur-Liste-Affiche{
     display: flex;
-    width: 20vw;
+    width: 30%;
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
     }
     
     .H-Createur-Liste-Affiche-Image{
-    height: 20vw;
+    aspect-ratio: 1/1;
     align-self: stretch;
     border-radius: 300px;
     background: #FFF;
@@ -136,6 +136,7 @@ body{
     width: 32px;
     height: 32px;
     object-fit: contain;
+    color: #FFF;
   }
 
   /* HEADER */
