@@ -1,4 +1,4 @@
-import "../../index.css";
+import "../index.css";
 import React, { useEffect, useRef, useState } from "react";
 
 const MusicPlayer = ({ track, onBack }) => {
