@@ -6,6 +6,8 @@ const MusicPlayer = ({ track, onBack }) => {
     const ambientAudioRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [progress, setProgress] = useState(0);
+    const [duration, setDuration] = useState(0);
+    const [currentTime, setCurrentTime] = useState(0);
 
     useEffect(() => {
         if (audioRef.current && track?.preview) {
@@ -15,6 +17,31 @@ const MusicPlayer = ({ track, onBack }) => {
             setIsPlaying(true);
         }
     }, [track]);
+
+    useEffect(() => {
+        const audio = audioRef.current;
+
+        const updateTime = () => {
+            setCurrentTime(audio.currentTime);
+            setProgress((audio.currentTime / audio.duration) * 100);
+        };
+
+        const setAudioDuration = () => {
+            setDuration(audio.duration);
+        };
+
+        if (audio) {
+            audio.addEventListener("timeupdate", updateTime);
+            audio.addEventListener("loadedmetadata", setAudioDuration);
+        }
+
+        return () => {
+            if (audio) {
+                audio.removeEventListener("timeupdate", updateTime);
+                audio.removeEventListener("loadedmetadata", setAudioDuration);
+            }
+        };
+    }, []);
 
     const togglePlay = () => {
         if (audioRef.current) {
@@ -34,6 +61,12 @@ const MusicPlayer = ({ track, onBack }) => {
             ambientAudioRef.current.volume = 1;
             ambientAudioRef.current.play().catch(error => console.log("Erreur lecture ambient :", error));
         }
+    };
+
+    const formatTime = (time) => {
+        const minutes = Math.floor(time / 60);
+        const seconds = Math.floor(time % 60);
+        return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
     };
 
     return (
@@ -66,7 +99,9 @@ const MusicPlayer = ({ track, onBack }) => {
                 <div className="progress-bar">
                     <div className="progress" style={{ width: `${progress}%` }}></div>
                 </div>
-                <div className="time">0:00 / 3:00</div>
+                <div className="time">
+                    {formatTime(currentTime)} / {formatTime(duration)}
+                </div>
             </section>
 
             {/* Contrôles */}
