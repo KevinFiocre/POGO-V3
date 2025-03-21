@@ -8,6 +8,7 @@ const MusicPlayer = ({ track, onBack }) => {
     const [progress, setProgress] = useState(0);
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
+    const [ambientVolume, setAmbientVolume] = useState(1);
 
     useEffect(() => {
         if (audioRef.current && track?.preview) {
@@ -58,8 +59,16 @@ const MusicPlayer = ({ track, onBack }) => {
         if (ambientAudioRef.current) {
             ambientAudioRef.current.src = soundPath;
             ambientAudioRef.current.loop = true;
-            ambientAudioRef.current.volume = 1;
+            ambientAudioRef.current.volume = ambientVolume;
             ambientAudioRef.current.play().catch(error => console.log("Erreur lecture ambient :", error));
+        }
+    };
+
+    const handleAmbientVolumeChange = (e) => {
+        const newVolume = parseFloat(e.target.value); // inversé : gauche = fort, droite = faible
+        setAmbientVolume(newVolume);
+        if (ambientAudioRef.current) {
+            ambientAudioRef.current.volume = newVolume;
         }
     };
 
@@ -133,7 +142,15 @@ const MusicPlayer = ({ track, onBack }) => {
                     </div>
                     <div className="MP-Ambiant-Volume">
                         <img src="/svg/volume_off.svg" alt="Pas de son" className="Icon" />
-                        <div></div>
+                        <input
+                            type="range"
+                            min="0"
+                            max="1"
+                            step="0.01"
+                            value={ambientVolume}
+                            onChange={handleAmbientVolumeChange}
+                            className="ambient-volume-slider"
+                        />
                         <img src="/svg/volume_up.svg" alt="" className="Icon" />
                     </div>
                 </div>
