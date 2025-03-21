@@ -31,9 +31,7 @@ const MusicPlayer = ({ track, onBack }) => {
             {/* En-tête */}
             <section className="MP-Head">
                 <button onClick={onBack}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                        <path d="M12 2L1 12h3v8h8v-3h4v3h8v-8h3L12 2z"/>
-                    </svg>
+                    <img src="/public/svg/reply.svg" alt="Retour" className="Icon" />
                 </button>
                 <img src="/image/LOGO.png" alt="Logo" className="LOGO" />
             </section>
@@ -63,29 +61,17 @@ const MusicPlayer = ({ track, onBack }) => {
 
             {/* Contrôles */}
             <section className="MP-Control">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <path d="M6 6h12v12H6z"/>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                </svg>
+                <img src="/public/svg/repeat.svg" alt="Repeter" className="Icon" />
+                <img src="/public/svg/skip_previous.svg" alt="Précédent" className="Icon" />
                 <button onClick={togglePlay} className="play">
                     {isPlaying ? (
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                            <path d="M6 4h4v16H6zm8 0h4v16h-4z"/>
-                        </svg>
+                        <img src="/public/svg/pause.svg" alt="Pause" className="Icon" />
                     ) : (
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
+                        <img src="/public/svg/play.svg" alt="Lecture" className="Icon" />
                     )}
                 </button>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <path d="M12 2L1 12h3v8h8v-3h4v3h8v-8h3L12 2z"/>
-                </svg>
+                <img src="/public/svg/skip_next.svg" alt="Suivant" className="Icon" />
+                <img src="/public/svg/shuffle.svg" alt="Mélanger" className="Icon" />
             </section>
             
             {/* Bruit d'ambiance */}
