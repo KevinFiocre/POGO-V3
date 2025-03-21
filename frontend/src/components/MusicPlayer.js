@@ -90,9 +90,9 @@ const MusicPlayer = ({ track, onBack }) => {
 
             {/* Image de l'album */}
             {track?.album?.cover_medium && (
-                <img 
-                    src={track.album.cover_medium} 
-                    alt="Cover" 
+                <img
+                    src={track.album.cover_medium}
+                    alt="Cover"
                     className="MP-Cover"
                 />
             )}
@@ -127,7 +127,7 @@ const MusicPlayer = ({ track, onBack }) => {
                 <img src="/svg/skip_next.svg" alt="Suivant" className="Icon" />
                 <img src="/svg/shuffle.svg" alt="Mélanger" className="Icon" />
             </section>
-            
+
             {/* Bruit d'ambiance */}
             <section className="MP-Ambiant">
                 <div className="MP-Ambiant-Head">
@@ -140,20 +140,21 @@ const MusicPlayer = ({ track, onBack }) => {
                         <h3>Bruit d’ambiance</h3>
                         <p>Artiste</p>
                     </div>
-                    <div className="MP-Ambiant-Volume">
-                        <img src="/svg/volume_off.svg" alt="Pas de son" className="Icon" />
-                        <input
-                            type="range"
-                            min="0"
-                            max="1"
-                            step="0.01"
-                            value={ambientVolume}
-                            onChange={handleAmbientVolumeChange}
-                            className="ambient-volume-slider"
-                        />
-                        <img src="/svg/volume_up.svg" alt="" className="Icon" />
-                    </div>
                 </div>
+                <div className="MP-Ambiant-Volume">
+                    <img src="/svg/volume_off.svg" alt="Pas de son" className="Icon" />
+                    <input
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.01"
+                        value={ambientVolume}
+                        onChange={handleAmbientVolumeChange}
+                        className="ambient-volume-slider"
+                    />
+                    <img src="/svg/volume_up.svg" alt="" className="Icon" />
+                </div>
+
                 <div className="MP-Ambiant-List">
                     <div className="MP-Ambiant-List-Bouton" onClick={() => playAmbientSound("/sounds/pluie.mp3")}>
                         <img src="/svg/rainy.svg" alt="Icon-Bruit" />
@@ -168,7 +169,7 @@ const MusicPlayer = ({ track, onBack }) => {
                         <p>Oiseaux</p>
                     </div>
                     <div className="MP-Ambiant-Bouton">
-                        
+
                     </div>
                 </div>
             </section>
