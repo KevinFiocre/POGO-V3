@@ -297,11 +297,7 @@ button {
 }
 
 .MP-Ambiant-List-Bouton {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
+    width: calc(33.333% - 10.66px);
     height: 100px;
     padding: 8px;
     border-radius: 12px;
@@ -311,6 +307,10 @@ button {
     font-weight: bold;
     cursor: pointer;
     transition: background 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .MP-Ambiant-List-Bouton:hover {
@@ -333,4 +333,3 @@ button {
 .MP-Ambiant-Bouton button:hover {
     background: #D94321;
 }
-
