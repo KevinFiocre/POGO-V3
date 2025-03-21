@@ -14,7 +14,7 @@ body,
     align-items: center;
     gap: 30px;
     flex: 1 0 0;
-    max-width: 80%;
+    width: 100%;
     min-width: 400px;
     margin: auto;
     /* Centrer dans la page */
@@ -337,4 +337,10 @@ button {
 
 .MP-Ambiant-Bouton button:hover {
     background: #D94321;
+}
+
+@media screen and (min-width: 1024px) {
+    .Container {
+        width: 50%;
+    }
 }
