@@ -218,6 +218,10 @@ button {
     letter-spacing: 0.312px;
 }
 
+.MP-Timer .time {
+    color: white;
+  }
+
 /* CONTROLES */
 .MP-Control {
     display: flex;
