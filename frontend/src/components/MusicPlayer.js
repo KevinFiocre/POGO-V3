@@ -31,7 +31,7 @@ const MusicPlayer = ({ track, onBack }) => {
         if (ambientAudioRef.current) {
             ambientAudioRef.current.src = soundPath;
             ambientAudioRef.current.loop = true;
-            ambientAudioRef.current.volume = 0.5;
+            ambientAudioRef.current.volume = 1;
             ambientAudioRef.current.play().catch(error => console.log("Erreur lecture ambient :", error));
         }
     };
