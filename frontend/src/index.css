@@ -141,19 +141,6 @@ p {
     letter-spacing: 0.22px;
 }
 
-.Container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    flex: 1 0 0;
-    max-width: 400px;
-    /* Empêcher un trop grand étirement */
-    margin: auto;
-    /* Centrer dans la page */
-    padding: 20px;
-    /* Ajouter du padding pour l’aération */
-}
 
 svg {
     width: 32px;
