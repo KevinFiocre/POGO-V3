@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 const MusicPlayer = ({ track, onBack }) => {
     const audioRef = useRef(null);
+    const ambientAudioRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [progress, setProgress] = useState(0);
 
@@ -23,6 +24,15 @@ const MusicPlayer = ({ track, onBack }) => {
                 audioRef.current.play();
             }
             setIsPlaying(!isPlaying);
+        }
+    };
+
+    const playAmbientSound = (soundPath) => {
+        if (ambientAudioRef.current) {
+            ambientAudioRef.current.src = soundPath;
+            ambientAudioRef.current.loop = true;
+            ambientAudioRef.current.volume = 0.5;
+            ambientAudioRef.current.play().catch(error => console.log("Erreur lecture ambient :", error));
         }
     };
 
@@ -93,7 +103,7 @@ const MusicPlayer = ({ track, onBack }) => {
                     </div>
                 </div>
                 <div className="MP-Ambiant-List">
-                    <div className="MP-Ambiant-List-Bouton">
+                    <div className="MP-Ambiant-List-Bouton" onClick={() => playAmbientSound("/sounds/pluie.mp3")}>
                         <img src="/svg/rainy.svg" alt="Icon-Bruit" />
                         <p>Pluie</p>
                     </div>
@@ -111,6 +121,7 @@ const MusicPlayer = ({ track, onBack }) => {
                 </div>
             </section>
             <audio ref={audioRef} />
+            <audio ref={ambientAudioRef} />
         </div>
     );
 };
