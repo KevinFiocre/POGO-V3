@@ -150,7 +150,7 @@ const MusicPlayer = ({ track, onBack }) => {
                         step="0.01"
                         value={ambientVolume}
                         onChange={handleAmbientVolumeChange}
-                        className="Ambiant-Volume-Slider"
+                        className="MP-Ambiant-Volume-Slider"
                     />
                     <img src="/svg/volume_up.svg" alt="" className="Icon" />
                 </div>
