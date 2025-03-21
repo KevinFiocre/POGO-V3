@@ -70,7 +70,7 @@ p {
     scroll-snap-align: start;
     /* Fait en sorte que chaque élément s'aligne dans le viewport */
     display: flex;
-    width: 60%;
+    width: 50%;
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
@@ -82,6 +82,7 @@ p {
     background: #D9D9D9;
     object-fit: cover;
     aspect-ratio: 1/1;
+    height: auto;
 }
 
 .H-Musique-Liste-Affiche-Titre {
@@ -114,7 +115,7 @@ p {
 
 .H-Createur-Liste-Affiche {
     display: flex;
-    width: 30%;
+    width: 20%;
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
@@ -126,6 +127,7 @@ p {
     border-radius: 300px;
     background: #FFF;
     object-fit: cover;
+    height: auto;
 }
 
 .H-Createur-Liste-Affiche-Nom {
@@ -146,7 +148,7 @@ svg {
     width: 32px;
     height: 32px;
     object-fit: contain;
-    color: #FFF;
+    fill: white;
 }
 
 /* HEADER */
