@@ -106,7 +106,7 @@ const MusicPlayer = ({ track, onBack }) => {
                         <p>Oiseaux</p>
                     </div>
                     <div className="MP-Ambiant-Bouton">
-                        <button>Modifier</button>
+                        
                     </div>
                 </div>
             </section>
