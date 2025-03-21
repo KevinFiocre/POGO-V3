@@ -107,11 +107,11 @@ const MusicPlayer = ({ track, onBack }) => {
                         <img src="/svg/rainy.svg" alt="Icon-Bruit" />
                         <p>Pluie</p>
                     </div>
-                    <div className="MP-Ambiant-List-Bouton">
+                    <div className="MP-Ambiant-List-Bouton" onClick={() => playAmbientSound("/sounds/foret.mp3")}>
                         <img src="/svg/forest.svg" alt="Icon-Bruit" />
                         <p>Forêt</p>
                     </div>
-                    <div className="MP-Ambiant-List-Bouton">
+                    <div className="MP-Ambiant-List-Bouton" onClick={() => playAmbientSound("/sounds/voiture.mp3")}>
                         <img src="/svg/raven.svg" alt="Icon-Bruit" />
                         <p>Oiseaux</p>
                     </div>
