@@ -287,6 +287,10 @@ button {
     width: 100%;
 }
 
+.MP-Ambiant-Volume-Slide {
+    width: 100%;
+}
+
 /* LISTE DES BRUITS */
 .MP-Ambiant-List {
     display: flex;
