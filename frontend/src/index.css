@@ -385,6 +385,7 @@ button {
     color: white;
     min-height: 100vh;
     font-family: Oxygen, sans-serif;
+    width: 100%;
 }
 
 .P-BackButton {

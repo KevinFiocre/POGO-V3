@@ -12,7 +12,7 @@ const PlaylistPage = () => {
   // Exemple de données fictives
   const playlist = {
     title: name.replace("-", " "),
-    cover: "/image/cover-default.jpg", // à personnaliser par playlist
+    cover: "/image/Sweater Weather.jpeg", // à personnaliser par playlist
     tracks: [
       { title: "Cry For Me", artist: "The Weeknd", liked: false },
       { title: "Open Hearts", artist: "The Weeknd", liked: true },
@@ -39,7 +39,7 @@ const PlaylistPage = () => {
       <div className="P-TrackList">
         {playlist.tracks.map((track, index) => (
           <div key={index} className="P-TrackItem">
-            <img src="/image/cover-default.jpg" alt="cover" className="P-TrackCover" />
+            <img src="#" alt="cover" className="P-TrackCover" />
             <div className="P-TrackInfo">
               <p className="P-TrackTitle">{track.title}</p>
               <p className="P-TrackArtist">{track.artist}</p>
