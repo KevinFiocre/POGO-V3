@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import MusicPlayer from "./components/MusicPlayer";
+import PlaylistPage from "./components/PlaylistPage";
 
 const App = () => {
   const [selectedTrack, setSelectedTrack] = useState(null);
@@ -26,91 +28,92 @@ const App = () => {
   };
 
   return (
-    <div className="Container">
-      {selectedTrack ? (
-        <MusicPlayer track={selectedTrack} onBack={handleBack} />
-      ) : (
-        <>
-          {/* Logo */}
-          <img src="/image/LOGO.png" alt="Logo" className="LOGO" />
+    <Router>
+      <div className="Container">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              selectedTrack ? (
+                <MusicPlayer track={selectedTrack} onBack={handleBack} />
+              ) : (
+                <>
+                  {/* Logo */}
+                  <img src="/image/LOGO.png" alt="Logo" className="LOGO" />
 
-          {/* Section Musique avec Scroll Horizontal pleine largeur */}
-          <section className="H-Musique">
-            <h2>
-              Sélection de musique expérimentale
-            </h2>
-            <div className="H-Musique-Liste">
-              {tracks.map((track) => (
-                <div
-                  key={track.id}
-                  className="H-Musique-Liste-Affiche"
-                  onClick={() => handleSelectTrack(track)}
-                >
-                  <img 
-                    src={track.album.cover_medium} 
-                    alt={track.title} 
-                    className="H-Musique-Liste-Affiche-Image" 
-                  />
-                  <p className="H-Musique-Liste-Affiche-Titre">{track.title}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+                  {/* Section Musique */}
+                  <section className="H-Musique">
+                    <h2>Sélection de musique expérimentale</h2>
+                    <div className="H-Musique-Liste">
+                      {tracks.map((track) => (
+                        <div
+                          key={track.id}
+                          className="H-Musique-Liste-Affiche"
+                          onClick={() => handleSelectTrack(track)}
+                        >
+                          <img 
+                            src={track.album.cover_medium} 
+                            alt={track.title} 
+                            className="H-Musique-Liste-Affiche-Image" 
+                          />
+                          <p className="H-Musique-Liste-Affiche-Titre">{track.title}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
 
-          {/* Section Playlists avec navigation vers pages de playlist */}
-          <section className="H-Playlist">
-            <h2>Playlists</h2>
-            <div className="H-Playlist-Liste">
-              <div
-                className="H-Playlist-Liste-Affiche"
-                onClick={() => handleSelectTrack(tracks[0])} // À remplacer par une vraie navigation vers la playlist
-              >
-                <img
-                  src="/image/playlist1.jpg"
-                  alt="Playlist Chill"
-                  className="H-Playlist-Liste-Affiche-Image"
-                />
-                <p className="H-Playlist-Liste-Affiche-Titre">Chill Vibes</p>
-              </div>
-              <div
-                className="H-Playlist-Liste-Affiche"
-                onClick={() => handleSelectTrack(tracks[1])}
-              >
-                <img
-                  src="/image/playlist2.jpg"
-                  alt="Playlist Focus"
-                  className="H-Playlist-Liste-Affiche-Image"
-                />
-                <p className="H-Playlist-Liste-Affiche-Titre">Focus & Study</p>
-              </div>
-            </div>
-          </section>
+                  {/* Section Playlists */}
+                  <section className="H-Playlist">
+                    <h2>Playlists</h2>
+                    <div className="H-Playlist-Liste">
+                      <PlaylistLink image="/image/playlist1.jpg" title="Chill Vibes" path="/playlist/chill" />
+                      <PlaylistLink image="/image/playlist2.jpg" title="Focus & Study" path="/playlist/focus" />
+                    </div>
+                  </section>
 
-          {/* Section Créateurs avec Scroll Horizontal pleine largeur */}
-          <section className="H-Createur">
-            <h2 className="">Les créateurs</h2>
-            <div className="H-Createur-Liste">
-              {creators.map((creator) => (
-                <a 
-                  key={creator.id} 
-                  href={creator.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="H-Createur-Liste-Affiche"
-                  onClick={() => console.log(`Ouverture du lien: ${creator.link}`)}
-                >
-                  <img 
-                    src={creator.img} 
-                    alt={creator.name} 
-                    className="H-Createur-Liste-Affiche-Image" 
-                  />
-                  <p className="H-Createur-Liste-Affiche-Nom">{creator.name}</p>
-                </a>
-              ))}
-            </div>
-          </section>
-        </>
-      )}
+                  {/* Section Créateurs */}
+                  <section className="H-Createur">
+                    <h2>Les créateurs</h2>
+                    <div className="H-Createur-Liste">
+                      {creators.map((creator) => (
+                        <a 
+                          key={creator.id} 
+                          href={creator.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="H-Createur-Liste-Affiche"
+                          onClick={() => console.log(`Ouverture du lien: ${creator.link}`)}
+                        >
+                          <img 
+                            src={creator.img} 
+                            alt={creator.name} 
+                            className="H-Createur-Liste-Affiche-Image" 
+                          />
+                          <p className="H-Createur-Liste-Affiche-Nom">{creator.name}</p>
+                        </a>
+                      ))}
+                    </div>
+                  </section>
+                </>
+              )
+            }
+          />
+          <Route path="/playlist/:name" element={<PlaylistPage />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+};
+
+const PlaylistLink = ({ image, title, path }) => {
+  const navigate = useNavigate();
+  return (
+    <div
+      className="H-Playlist-Liste-Affiche"
+      onClick={() => navigate(path)}
+    >
+      <img src={image} alt={title} className="H-Playlist-Liste-Affiche-Image" />
+      <p className="H-Playlist-Liste-Affiche-Titre">{title}</p>
     </div>
   );
 };
