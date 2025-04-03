@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import MusicPlayer from "./components/MusicPlayer";
 import PlaylistPage from "./components/PlaylistPage";
 
@@ -28,10 +28,9 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <div className="Container">
-        <Routes>
-          <Route
+    <div className="Container">
+      <Routes>
+        <Route
             path="/"
             element={
               selectedTrack ? (
@@ -99,9 +98,8 @@ const App = () => {
             }
           />
           <Route path="/playlist/:name" element={<PlaylistPage />} />
-        </Routes>
-      </div>
-    </Router>
+      </Routes>
+    </div>
   );
 };
 
