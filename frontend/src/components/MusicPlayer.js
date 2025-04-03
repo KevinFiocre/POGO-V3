@@ -82,7 +82,7 @@ const MusicPlayer = ({ track, onBack }) => {
     };
 
     return (
-        <div className="Container">
+        <div className="MP-Container">
             {/* En-tête */}
             <section className="MP-Head">
                 <button onClick={onBack}>

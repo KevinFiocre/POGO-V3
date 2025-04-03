@@ -175,6 +175,17 @@ button {
 
 
 /* HEADER */
+.MP-Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    min-width: 400px;
+    margin: auto;
+    padding: 20px;
+}
+
 .MP-Head {
     display: flex;
     justify-content: space-between;
