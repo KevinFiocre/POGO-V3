@@ -351,57 +351,6 @@ button {
     background: #D94321;
 }
 
-.H-Playlist {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 18px;
-    align-self: stretch;
-}
-
-.H-Playlist-Liste {
-    display: flex;
-    gap: 32px;
-    align-self: stretch;
-    overflow-y: auto;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    white-space: nowrap;
-}
-
-.H-Playlist-Liste-Affiche {
-    flex: 0 0 auto;
-    scroll-snap-align: start;
-    display: flex;
-    width: 40%;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    cursor: pointer;
-}
-
-.H-Playlist-Liste-Affiche-Image {
-    align-self: stretch;
-    border-radius: 2px;
-    background: #D9D9D9;
-    object-fit: cover;
-    aspect-ratio: 1/1;
-    height: auto;
-}
-
-.H-Playlist-Liste-Affiche-Titre {
-    align-self: stretch;
-    color: #FFF;
-    text-align: center;
-    font-family: Oxygen;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%;
-    letter-spacing: 0.22px;
-}
-
 @media screen and (min-width: 1024px) {
     .Container {
         width: 50%;
@@ -428,4 +377,121 @@ button {
     .MP-Ambiant-List-Bouton {
       font-size: 18px;
     }
-  }
+}
+
+.P-Page {
+    padding: 16px;
+    background-color: #121212;
+    color: white;
+    min-height: 100vh;
+    font-family: Oxygen, sans-serif;
+}
+
+.P-BackButton {
+    background: none;
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 12px;
+}
+
+.P-Header {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.P-Cover {
+    width: 150px;
+    height: 150px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.P-Info {
+    flex-grow: 1;
+}
+
+.P-Title {
+    font-size: 24px;
+    margin: 0;
+    font-family: Oxygen;
+    color: white;
+}
+
+.P-Subtitle {
+    font-size: 14px;
+    opacity: 0.7;
+    margin: 4px 0 12px;
+    font-family: Oxygen;
+}
+
+.P-Actions {
+    display: flex;
+    gap: 12px;
+}
+
+.P-BtnAction,
+.P-BtnPlay {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.P-BtnPlay {
+    background-color: #9147ff;
+    padding: 8px 16px;
+    border-radius: 24px;
+    font-weight: bold;
+}
+
+.P-TrackList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.P-TrackItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #1e1e1e;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.P-TrackCover {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.P-TrackInfo {
+    flex-grow: 1;
+}
+
+.P-TrackTitle {
+    margin: 0;
+    font-weight: bold;
+    font-family: Oxygen;
+}
+
+.P-TrackArtist {
+    margin: 0;
+    font-size: 13px;
+    opacity: 0.7;
+    font-family: Oxygen;
+}
+
+.P-LikeButton {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}

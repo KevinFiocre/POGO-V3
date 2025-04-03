@@ -1,6 +1,5 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import "./PlaylistPage.css";
 
 const PlaylistPage = () => {
   const { name } = useParams();
@@ -21,31 +20,31 @@ const PlaylistPage = () => {
   };
 
   return (
-    <div className="PlaylistPage">
-      <button className="BackButton" onClick={handleBack}>← Retour</button>
-      <div className="PlaylistHeader">
-        <img src={playlist.cover} alt={playlist.title} className="PlaylistCover" />
-        <div className="PlaylistInfo">
-          <h1 className="PlaylistTitle">{playlist.title}</h1>
-          <p className="PlaylistSubtitle">Deezer Artist Editor</p>
-          <div className="PlaylistActions">
-            <button className="BtnAction">💜</button>
-            <button className="BtnAction">⬇️</button>
-            <button className="BtnAction">🔁</button>
-            <button className="BtnPlay">▶️</button>
+    <div className="P-Page">
+      <button className="P-BackButton" onClick={handleBack}>← Retour</button>
+      <div className="P-Header">
+        <img src={playlist.cover} alt={playlist.title} className="P-Cover" />
+        <div className="P-Info">
+          <h1 className="P-Title">{playlist.title}</h1>
+          <p className="P-Subtitle">Deezer Artist Editor</p>
+          <div className="P-Actions">
+            <button className="P-BtnAction">💜</button>
+            <button className="P-BtnAction">⬇️</button>
+            <button className="P-BtnAction">🔁</button>
+            <button className="P-BtnPlay">▶️</button>
           </div>
         </div>
       </div>
 
-      <div className="TrackList">
+      <div className="P-TrackList">
         {playlist.tracks.map((track, index) => (
-          <div key={index} className="TrackItem">
-            <img src="/image/cover-default.jpg" alt="cover" className="TrackCover" />
-            <div className="TrackInfo">
-              <p className="TrackTitle">{track.title}</p>
-              <p className="TrackArtist">{track.artist}</p>
+          <div key={index} className="P-TrackItem">
+            <img src="/image/cover-default.jpg" alt="cover" className="P-TrackCover" />
+            <div className="P-TrackInfo">
+              <p className="P-TrackTitle">{track.title}</p>
+              <p className="P-TrackArtist">{track.artist}</p>
             </div>
-            <button className="LikeButton">{track.liked ? "💜" : "🤍"}</button>
+            <button className="P-LikeButton">{track.liked ? "💜" : "🤍"}</button>
           </div>
         ))}
       </div>
