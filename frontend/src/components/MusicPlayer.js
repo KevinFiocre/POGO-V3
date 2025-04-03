@@ -145,7 +145,7 @@ const MusicPlayer = ({ track, onBack }) => {
                     </div>
                 </div>
                 <div className="MP-Ambiant-Volume">
-                    <img src="/svg/volume_off.svg" alt="Pas de son" className="Icon" />
+                    <img src="/svg/volume_up.svg" alt="Pas de son" className="Icon" />
                     <input
                         type="range"
                         min="0"
@@ -155,7 +155,7 @@ const MusicPlayer = ({ track, onBack }) => {
                         onChange={handleAmbienceBalanceChange}
                         className="MP-Ambiant-Volume-Slider"
                     />
-                    <img src="/svg/volume_up.svg" alt="" className="Icon" />
+                    <img src="/svg/forest.svg" alt="" className="Icon" />
                 </div>
 
                 <div className="MP-Ambiant-List">
