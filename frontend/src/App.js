@@ -57,6 +57,35 @@ const App = () => {
             </div>
           </section>
 
+          {/* Section Playlists avec navigation vers pages de playlist */}
+          <section className="H-Playlist">
+            <h2>Playlists</h2>
+            <div className="H-Playlist-Liste">
+              <div
+                className="H-Playlist-Liste-Affiche"
+                onClick={() => handleSelectTrack(tracks[0])} // À remplacer par une vraie navigation vers la playlist
+              >
+                <img
+                  src="/image/playlist1.jpg"
+                  alt="Playlist Chill"
+                  className="H-Playlist-Liste-Affiche-Image"
+                />
+                <p className="H-Playlist-Liste-Affiche-Titre">Chill Vibes</p>
+              </div>
+              <div
+                className="H-Playlist-Liste-Affiche"
+                onClick={() => handleSelectTrack(tracks[1])}
+              >
+                <img
+                  src="/image/playlist2.jpg"
+                  alt="Playlist Focus"
+                  className="H-Playlist-Liste-Affiche-Image"
+                />
+                <p className="H-Playlist-Liste-Affiche-Titre">Focus & Study</p>
+              </div>
+            </div>
+          </section>
+
           {/* Section Créateurs avec Scroll Horizontal pleine largeur */}
           <section className="H-Createur">
             <h2 className="">Les créateurs</h2>
