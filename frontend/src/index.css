@@ -21,6 +21,7 @@ body,
     /* Centrer dans la page */
     padding: 20px;
     /* Ajouter du */
+    min-height: 100%;
 }
 
 .LOGO {
@@ -94,7 +95,7 @@ button {
     scroll-snap-align: start;
     /* Fait en sorte que chaque élément s'aligne dans le viewport */
     display: flex;
-    width: 50%;
+    width: 40%;
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
@@ -355,3 +356,25 @@ button {
         width: 50%;
     }
 }
+
+
+@media screen and (max-width: 1023px) {
+    h2 {
+      font-size: 22px;
+    }
+  
+    .H-Musique-Liste-Affiche-Titre,
+    .H-Createur-Liste-Affiche-Nom,
+    .MP-Nom-Titre,
+    .MP-Nom-Nom {
+      font-size: 26px;
+    }
+  
+    p {
+      font-size: 18px;
+    }
+  
+    .MP-Ambiant-List-Bouton {
+      font-size: 18px;
+    }
+  }
