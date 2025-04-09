@@ -15,7 +15,7 @@ const App = () => {
 
   const creators = [
     { id: 1, name: "Kevin", img: "/image/kevin.png", link: "https://www.instagram.com/kd3.6.7/" },
-    { id: 2, name: "Lucie", img: "/image/lucie.jpeg", link: "https://www.linkedin.com/in/lucie" },
+    { id: 2, name: "Lucie", img: "/image/lucie.jpeg", link: "https://www.instagram.com/1santonor/" },
     { id: 3, name: "Alexandra", img: "/image/alexandra.jpeg", link: "https://www.instagram.com/alexandra" },
   ];
 
@@ -65,8 +65,8 @@ const App = () => {
                   <section className="H-Playlist">
                     <h2>Playlists</h2>
                     <div className="H-Playlist-Liste">
-                      <PlaylistLink image="/image/Sweater Weather.jpeg" title="Chill Vibes" path="/playlist/chill" />
-                      <PlaylistLink image="/image/Sweater Weather.jpeg" title="Focus & Study" path="/playlist/focus" />
+                      <PlaylistLink image="/image/AlbumTheWeeknd.jpg" title="Chill Vibes" path="/playlist/chill" />
+                      <PlaylistLink image="/image/Albumtame.jpg" title="Focus & Study" path="/playlist/focus" />
                     </div>
                   </section>
 
