@@ -65,7 +65,7 @@ const App = () => {
                   <section className="H-Playlist">
                     <h2>Playlists</h2>
                     <div className="H-Playlist-Liste">
-                      <PlaylistLink image="/image/AlbumTheWeeknd.jpg" title="Chill Vibes" path="/playlist/chill" />
+                      <PlaylistLink image="/image/AlbumTheWeeknd.jpg" title="100% TheWeeknd" path="/playlist/chill" />
                       <PlaylistLink image="/image/Albumtame.jpg" title="Focus & Study" path="/playlist/focus" />
                     </div>
                   </section>

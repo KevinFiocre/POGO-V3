@@ -1,7 +1,7 @@
 import "../index.css";
 import React, { useEffect, useRef, useState } from "react";
 
-const MusicPlayer = ({ track, onBack }) => {
+const MusicPlayer = ({ track, playlist, currentIndex, onBack }) => {
     const audioRef = useRef(null);
     const ambientAudioRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -34,15 +34,27 @@ const MusicPlayer = ({ track, onBack }) => {
         if (audio) {
             audio.addEventListener("timeupdate", updateTime);
             audio.addEventListener("loadedmetadata", setAudioDuration);
+            audio.addEventListener("ended", playNextTrack);
         }
 
         return () => {
             if (audio) {
                 audio.removeEventListener("timeupdate", updateTime);
                 audio.removeEventListener("loadedmetadata", setAudioDuration);
+                audio.removeEventListener("ended", playNextTrack);
             }
         };
     }, []);
+
+    const playNextTrack = () => {
+        if (playlist && currentIndex !== undefined && currentIndex < playlist.length - 1) {
+            const nextTrack = playlist[currentIndex + 1];
+            audioRef.current.src = nextTrack.file;
+            audioRef.current.load();
+            audioRef.current.play().catch(error => console.log("Erreur de lecture du prochain morceau :", error));
+            setIsPlaying(true);
+        }
+    };
 
     const togglePlay = () => {
         if (audioRef.current) {

@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 const PlaylistPage = () => {
   const { name } = useParams();
@@ -12,11 +12,37 @@ const PlaylistPage = () => {
   // Exemple de données fictives
   const playlist = {
     title: name.replace("-", " "),
-    cover: "/image/Sweater Weather.jpeg", // à personnaliser par playlist
+    cover: "/image/AlbumTheWeeknd.jpg", // à personnaliser par playlist
     releaseDate: "Mars 2024",
     tracks: [
-      { title: "Cry For Me", artist: "The Weeknd", duration: 210, liked: false },
-      { title: "Open Hearts", artist: "The Weeknd", duration: 185, liked: true },
+      {
+        title: "After Hours",
+        artist: "The Weeknd",
+        duration: 361,
+        liked: false,
+        file: "/music/The Weeknd - After Hours.mp3",
+      },
+      {
+        title: "Save Your Tears",
+        artist: "The Weeknd",
+        duration: 215,
+        liked: true,
+        file: "/music/The Weeknd - Save Your Tears.mp3",
+      },
+      {
+        title: "One Of The Girls",
+        artist: "The Weeknd, JENNIE & Lily Rose Depp",
+        duration: 228,
+        liked: true,
+        file: "/music/The Weeknd, JENNIE & Lily Rose Depp - One Of The Girls .mp3",
+      },
+      {
+        title: "Timeless",
+        artist: "The Weeknd, Playboi Carti",
+        duration: 199,
+        liked: false,
+        file: "/music/The Weeknd, Playboi Carti - Timeless.mp3",
+      },
     ],
   };
 
@@ -50,14 +76,19 @@ const PlaylistPage = () => {
 
       <div className="P-TrackList">
         {playlist.tracks.map((track, index) => (
-          <div key={index} className="P-TrackItem">
+          <Link
+            to="/player"
+            state={{ track, playlist: playlist.tracks }}
+            key={index}
+            className="P-TrackItem"
+          >
             <img src="#" alt="cover" className="P-TrackCover" />
             <div className="P-TrackInfo">
               <p className="P-TrackTitle">{track.title}</p>
               <p className="P-TrackArtist">{track.artist}</p>
             </div>
             <button className="P-LikeButton">{track.liked ? "💜" : "🤍"}</button>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
