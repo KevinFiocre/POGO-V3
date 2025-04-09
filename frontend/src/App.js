@@ -98,7 +98,6 @@ const App = () => {
             }
           />
           <Route path="/playlist/:name" element={<PlaylistPage />} />
-          <Route path="/player" element={<PlayerPage />} />
       </Routes>
     </div>
   );
