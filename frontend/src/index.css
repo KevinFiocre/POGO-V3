@@ -123,6 +123,65 @@ button {
     letter-spacing: 0.22px;
 }
 
+H-Playlist{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    align-self: stretch;
+
+}
+
+.H-Playlist-Liste {
+    display: flex;
+    gap: 32px;
+    align-self: stretch;
+    overflow-y: auto;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    /* Active le slider */
+    scroll-behavior: smooth;
+    /* Rend le défilement fluide */
+    white-space: nowrap;
+    /* Assure que les éléments restent en ligne */
+}
+.H-Playlist-Liste-Affiche {
+    flex: 0 0 auto;
+    /* Empêche les éléments de s'étirer */
+    scroll-snap-align: start;
+    /* Fait en sorte que chaque élément s'aligne dans le viewport */
+    display: flex;
+    width: 40%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+.H-Playlist-Liste-Affiche-Image {
+    align-self: stretch;
+    border-radius: 2px;
+    background: #D9D9D9;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    height: auto;
+}
+.H-Playlist-Liste-Affiche-Titre {
+    align-self: stretch;
+    color: #FFF;
+    text-align: center;
+    font-family: Oxygen;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    /* 16.5px */
+    letter-spacing: 0.22px;
+}
+
+
+
+
+
+
 .H-Createur {
     display: flex;
     flex-direction: column;
