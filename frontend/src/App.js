@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import MusicPlayer from "./components/MusicPlayer";
 import PlaylistPage from "./components/PlaylistPage";
+import PlayerPage from "./components/PlayerPage";
 
 const App = () => {
   const [selectedTrack, setSelectedTrack] = useState(null);
@@ -98,6 +99,7 @@ const App = () => {
             }
           />
           <Route path="/playlist/:name" element={<PlaylistPage />} />
+          <Route path="/player" element={<PlayerPage />} />
       </Routes>
     </div>
   );
