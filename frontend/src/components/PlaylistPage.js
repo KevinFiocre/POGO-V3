@@ -13,10 +13,18 @@ const PlaylistPage = () => {
   const playlist = {
     title: name.replace("-", " "),
     cover: "/image/Sweater Weather.jpeg", // à personnaliser par playlist
+    releaseDate: "Mars 2024",
     tracks: [
-      { title: "Cry For Me", artist: "The Weeknd", liked: false },
-      { title: "Open Hearts", artist: "The Weeknd", liked: true },
+      { title: "Cry For Me", artist: "The Weeknd", duration: 210, liked: false },
+      { title: "Open Hearts", artist: "The Weeknd", duration: 185, liked: true },
     ],
+  };
+
+  const totalDuration = playlist.tracks.reduce((acc, track) => acc + track.duration, 0);
+  const formatDuration = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${minutes}min ${secs < 10 ? "0" : ""}${secs}s`;
   };
 
   return (
@@ -27,6 +35,10 @@ const PlaylistPage = () => {
         <div className="P-Info">
           <h1 className="P-Title">{playlist.title}</h1>
           <p className="P-Subtitle">Deezer Artist Editor</p>
+          <div className="P-Details">
+            <p>{playlist.tracks.length} titres • {formatDuration(totalDuration)}</p>
+            <p>Sortie : {playlist.releaseDate}</p>
+          </div>
           <div className="P-Actions">
             <button className="P-BtnAction">💜</button>
             <button className="P-BtnAction">⬇️</button>
